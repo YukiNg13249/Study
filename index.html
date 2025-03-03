@@ -3,8 +3,31 @@
 <head>
 <link rel="stylesheet" href="index.css">
 <style>
-  p {
-    background-color: linen;
+  /* Tooltip container */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
   }
 </style>
 </head>
@@ -12,7 +35,7 @@
 
   <p>喂</p>
   <iframe width="560" height="315" src="https://www.youtube.com/embed/RHZb_u3VOco?si=jz2Qw4MNd2tFfxUX&amp;start=782" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  <h3>얼마나 <u>먹여 줘</u>야 돼</h3>
+  <h3>얼마나 <p class="tooltip">먹여 줘</p>야 돼 <span class="tooltiptext">먹이다</span> </h3>
 
 </body>
 </html>
