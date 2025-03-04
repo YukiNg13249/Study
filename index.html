@@ -3,39 +3,63 @@
 <head>
 <link rel="stylesheet" href="index.css">
 <style>
-  /* Tooltip container */
-  .tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-  }
+    /* Tooltip container */
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+    }
   
-  /* Tooltip text */
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-   
-    /* Position the tooltip text - see examples below! */
-    position: absolute;
-    z-index: 1;
-  }
+    /* Tooltip text */
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: white;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: 150%;
+        left: 50%;
+        margin-left: -60px;
+    }
+
+    .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent black transparent;
+    }
   
-  /* Show the tooltip text when you mouse over the tooltip container */
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-  }
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+
+    td {
+        text-align: center;
+    }
 </style>
 </head>
 <body>
-
-  <p>喂</p>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/RHZb_u3VOco?si=jz2Qw4MNd2tFfxUX&amp;start=782" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  <h3>얼마나 <p class="tooltip">먹여 줘</p>야 돼 <span class="tooltiptext">먹이다</span> </h3>
+    <table style="width: 100%;">
+        <tr>
+            <th>Translation</th>
+            <th>Example</th>
+            <th>Video</th>
+        </tr>
+        <tr>
+            <td>喂 to feed</td>
+            <td>얼마나 <div class="tooltip">먹여 <span class="tooltiptext">먹이다</span></div> 줘야 돼</td>
+            <td><iframe src="https://www.youtube.com/embed/RHZb_u3VOco?si=jz2Qw4MNd2tFfxUX&amp;start=779" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+        </tr>   
+    </table>
 
 </body>
 </html>
