@@ -42,8 +42,14 @@
         visibility: visible;
     }
 
+    table, th, td {
+        border: 1px solid black;
+    }
     td {
         text-align: center;
+    }
+    .Example td {
+        font-size: small;
     }
 </style>
 </head>
@@ -60,7 +66,96 @@
             <td><iframe src="https://www.youtube.com/embed/RHZb_u3VOco?si=jz2Qw4MNd2tFfxUX&amp;start=779" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
         </tr>   
     </table>
-
+    <table style="width: 100%;">
+        <tr> 
+            <th>형용사</th>
+            <th>동사</th>
+            <th>명사</th>
+            <th>존댓말</th>
+        </tr>
+        <tr class="Type">
+            <td colspan="2">A/V-았었으면 좋겠다</td>
+            <td>N-(이)였으면 좋겠다</td>
+            <td>A/V-(으)셨으면 좋겠다</td>
+        </tr>
+        <tr class="Example">
+            <td>너처럼 꼼꼼했으면 좋겠어요.</td>
+            <td>빨리 나았으면 좋겠어요.</td>
+            <td>한국 사람이였으면 좋겠어요.</td>
+            <td>아기를 낳으셨으면 좋겠어요.</td>
+        </tr>   
+        <tr class="Type">
+            <td>얼마나 A-(으)ㄴ데요</td>
+            <td>얼마나 V-는데요</td>
+            <td>얼마나 N-인데요</td>
+            <td>얼마나 A-(으)신데요<br>얼마나 V-(으)시는데요<br>얼마나 N-(이)신데요</td>
+        </tr>
+        <tr class="Example">
+            <td>얼마나 높은데요.</td>
+            <td>얼마나 웃기는데요.</td>
+            <td>얼마나 힘든 일인데요.</td>
+            <td>얼마나 잘 벌으시는데요.<br>얼마나 멋진 분이신데요.</td>
+        </tr>
+        <tr class="Type">
+            <td>A-다면서요?</td>
+            <td>V-ㄴ/는다면서요?</td>
+            <td>N-(이)라면서요?</td>
+            <td>A-(으)시다면서요?<br>V-(으)신다면서요?<br>N-(이)시다면서요?</td>
+        </tr>  
+        <tr class="Example">
+            <td>비싼다면서요?</td>
+            <td>간다면서요?<br>안 먹는다면서요?</td>
+            <td>한국 사람이라면서요?</td>
+            <td>아프시다면서요?<br>아기를 낳으신다면서요?<br>선생님이라면서요?</td>
+        </tr>
+        <tr class="Type">
+            <td>A-다!</td>
+            <td>V-ㄴ/는다!</td>
+            <td>N-(이)다!</td>
+            <td>A-(으)시다!<br>V-(으)신다!<br>N-(이)시다!</td>
+        </tr>
+        <tr class="Example">
+            <td>진짜 맵다!</td>
+            <td>나비 간다!<br>안 먹는다!</td>
+            <td>한국 사람이다!</td>
+            <td>어머니가 만드신다!</td>
+        </tr>
+        <tr class="Type">
+            <td>A-다면</td>
+            <td>V-ㄴ/는다면</td>
+            <td>N-(이)라면</td>
+            <td>A-(으)시다면<br>V-(으)신다면<br>N-(이)시라면</td>
+        </tr>
+        <tr class="Example">
+            <td>안 비싸다면</td>
+            <td>발렌타인 데이 전에 남자 친구가 생긴다면 디즈니랜드에 
+                같이 갈 거예요.<br>안 먹는다면</td>
+            <td>내가 아이돌이라면 SM에 들어갈 거에요.</td>
+            <td>아프시다면<br>아기를 낳으신다면<br>선생님이시라면</td>
+    </table>
+    <!-- <form>
+        <div class="question">
+            Answer the question in the box below.
+        </div>
+        <div class="answer">
+            <input type="text" id="answer" name="answer" size="50" autofocus>
+            <button onclick="checkAnswer()">Submit</button>
+        </div>
+        <button onclick="nextQuestion()">Next</button>
+    </form> -->
+    <!-- <script>
+        function nextQuestion() {
+            document.getElementById("answer").value = "";
+        }
+        function checkAnswer() {
+            var answer = document.getElementById("answer").value;
+            if (answer == "hi") {
+                alert("Correct!");
+            } else {
+                alert("Incorrect. Try again.");
+            }
+        }
+    </script> -->
 </body>
 </html>
 
