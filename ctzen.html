@@ -1,317 +1,474 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="index.css">
-<style>
-    /* Tooltip container */
-    .tooltip {
-        position: relative;
-        display: inline-block;
-        border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-    }
-  
-    /* Tooltip text */
-    .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 120px;
-        background-color: black;
-        color: white;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px 0;
-        position: absolute;
-        z-index: 1;
-        top: 150%;
-        left: 50%;
-        margin-left: -60px;
-    }
+    <title>Korean Summary</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+        /* Tooltip container */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+        }
+    
+        /* Tooltip text */
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            top: 150%;
+            left: 50%;
+            margin-left: -60px;
+        }
 
-    .tooltip .tooltiptext::after {
-        content: "";
-        position: absolute;
-        bottom: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: transparent transparent black transparent;
-    }
-  
-    /* Show the tooltip text when you mouse over the tooltip container */
-    .tooltip:hover .tooltiptext {
-        visibility: visible;
-    }
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent black transparent;
+        }
+    
+        /* Show the tooltip text when you mouse over the tooltip container */
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
 
-    table, th, td {
-        border: 1px solid black;
-    }
-    td {
-        text-align: center;
-    }
-    .Example td {
-        font-size: x-small;
-    }
-    .EmptyData {
-        background-color: grey;
-    }
-</style>
+        table, th, td {
+            border: 1px solid black;
+        }
+        td {
+            text-align: center;
+        }
+        .Example td {
+            font-size: x-small;
+        }
+        .EmptyData {
+            background-color: grey;
+        }
+        .tablink {
+            background-color: #555;
+            color: white;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            font-size: 17px;
+            width: 50%;
+        }
+
+        .tablink:hover {
+            background-color: #777;
+        }
+
+        .tabcontent {
+            color: black;
+            display: none;  
+            height: 100%;
+            padding-top: 50px;
+        }
+
+        .navbar {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+
+        .dropdown-content {
+            display: none;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            padding-top: 50px;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display:block;
+        }
+    </style>
 </head>
 <body>
-    <table style="width: 100%;">
-        <tr>
-            <th>Translation</th>
-            <th>Example</th>
-            <th>Video</th>
-        </tr>
-        <tr>
-            <td>餵 to feed</td>
-            <td>얼마나 <div class="tooltip">먹여 <span class="tooltiptext">먹이다</span></div> 줘야 돼</td>
-            <td><iframe src="https://www.youtube.com/embed/RHZb_u3VOco?si=jz2Qw4MNd2tFfxUX&amp;start=779" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
-        </tr>   
-    </table>
-    <table style="width: 100%;">
-        <tr> 
-            <th>형용사</th>
-            <th>동사</th>
-            <th>명사</th>
-            <th>존댓말</th>
-        </tr>
-        <tr class="Type">
-            <td colspan="2">A/V-았었으면 좋겠다</td>
-            <td>N-(이)였으면 좋겠다</td>
-            <td>A/V-(으)셨으면 좋겠다</td>
-        </tr>
-        <tr class="Example">
-            <td>너처럼 꼼꼼했으면 좋겠어요.</td>
-            <td>빨리 나았으면 좋겠어요.</td>
-            <td>한국 사람이였으면 좋겠어요.</td>
-            <td>아기를 낳으셨으면 좋겠어요.</td>
-        </tr>   
-        <tr class="Type">
-            <td>얼마나 A-(으)ㄴ데요</td>
-            <td>얼마나 V-는데요</td>
-            <td>얼마나 N-인데요</td>
-            <td>얼마나 A-(으)신데요<br>얼마나 V-(으)시는데요<br>얼마나 N-(이)신데요</td>
-        </tr>
-        <tr class="Example">
-            <td>얼마나 높은데요.</td>
-            <td>얼마나 웃기는데요.<br>얼마나 떨리는데요.</td>
-            <td>얼마나 힘든 일인데요.</td>
-            <td>얼마나 잘 벌으시는데요.<br>얼마나 멋진 분이신데요.</td>
-        </tr>
-        <tr class="Type">
-            <td>A-다면서요?</td>
-            <td>V-ㄴ/는다면서요?</td>
-            <td>N-(이)라면서요?</td>
-            <td>A-(으)시다면서요?<br>V-(으)신다면서요?<br>N-(이)시다면서요?</td>
-        </tr>  
-        <tr class="Example">
-            <td>비싼다면서요?</td>
-            <td>간다면서요?<br>안 먹는다면서요?</td>
-            <td>한국 사람이라면서요?</td>
-            <td>아프시다면서요?<br>아기를 낳으신다면서요?<br>선생님이라면서요?</td>
-        </tr>
-        <tr class="Type">
-            <td>A-다!</td>
-            <td>V-ㄴ/는다!</td>
-            <td>N-(이)다!</td>
-            <td>A-(으)시다!<br>V-(으)신다!<br>N-(이)시다!</td>
-        </tr>
-        <tr class="Example">
-            <td>진짜 맵다!</td>
-            <td>나비가 간다!<br>안 먹는다!</td>
-            <td>한국 사람이다!</td>
-            <td>어머니가 만드신다!</td>
-        </tr>
-        <tr class="Type">
-            <td>A-다면</td>
-            <td>V-ㄴ/는다면</td>
-            <td>N-(이)라면</td>
-            <td>A-(으)시다면<br>V-(으)신다면<br>N-(이)시라면</td>
-        </tr>
-        <tr class="Type">
-            <td class="EmptyData"></td>
-            <td>V-(으)ㄹ래요 </td>
-            <td class="EmptyData"></td>
-            <td>Used in spoken language/ casual style only<br>V-겠습니다/겠어요</td>
-        </tr>
-        <tr class="Example">
-            <td class="EmptyData"></td>
-            <td>배불러요. 그만 먹을래요.<br>뭐 먹을래?</td>
-            <td class="EmptyData"></td>
-            <td class="EmptyData"></td>
-        </tr>
-        <tr class="Type">
-            <td class="EmptyData"></td>
-            <td class="EmptyData"></td>
-            <td>N 때문에<br>Due to N</td>
-            <td class="EmptyData"></td>
-        </tr>
-        <tr class="Example">
-            <td class="EmptyData"></td>
-            <td class="EmptyData"></td>
-            <td>시간 때문에 못 가요.</td>
-            <td class="EmptyData"></td>
-        </tr>
-        <tr class="Type">
-            <td class="EmptyData"></td>
-            <td class="EmptyData"></td>
-            <td>N-(이)라서<br>N-(이)기 때문에</td>
-            <td class="EmptyData"></td>
-        </tr>
-        <tr class="Example">
-            <td class="EmptyData"></td>
-            <td class="EmptyData"></td>
-            <td>홍콩 사람이라서 한국어를 몰라요.</td>
-            <td class="EmptyData"></td>
-        </tr>
-        <tr class="Type">
-            <td class="EmptyData"></td>
-            <td>V-느라고</td>
-            <td class="EmptyData"></td>
-            <td>V-(으)시느라고</td>
-        </tr>
-        <tr class="Example">
-            <td class="EmptyData"></td>
-            <td>자느라고 수업에 늦었어요.</td>
-            <td class="EmptyData"></td>
-            <td>엄마가 주무시느라고 수업에 늦었어요.</td>
-        </tr>
-        <tr class="Type">
-            <td colspan="2">아무리 A/V-아/어도</td>
-            <td>아무리 N-(이)라도 </td>
-            <td>아무리 V/A-(으)셔도 </td>
-        </tr>
-        <tr class="Example">
-            <td>아무리 비싸도 살 거에요.</td>
-            <td>아무리 배불러도 꼭 디저트를 먹어야 돼요.</td>
-            <td>아무리 싼 가격이라도 안 살 거예요.</td>
-            <td>아무리 멋있으셔도 결혼 안 하겠어요.</td>
-        </tr>
-        <tr class="Type">
-            <td class="EmptyData"></td>
-            <td>
-                V-기(가) A:<br>
-                쉽다/어렵다<br>
-                좋다/나쁘다<br>
-                편하다/불편하다<br>
-                힘들다/귀찮다
-            </td>
-            <td class="EmptyData"></td>
-            <td>V-(으)시기 A</td>
-        </tr>
-        <tr class="Example">
-            <td class="EmptyData"></td>
-            <td>먹기 힘들어요.</td>
-            <td class="EmptyData"></td>
-            <td>엄마는 한자가 외우시기 어렵다고 생각해요.</td>
-        </tr>
-        <tr class="Type">
-            <td colspan="2">A/V-거든요</td>
-            <td>N-(이)거든요</td>
-            <td>A/V-(으)시거든요<br>N-(이)시거든요</td>
-        </tr>
-        <tr class="Example">
-            <td>가격도 싸고 맛있거든요.</td>
-            <td>얼마전에 다쳤거든요.</td>
-            <td>오늘 휴관일이거든요.</td>
-            <td>선생님이 무서우시거든요.<br>교수님이시거든요.</td>
-        </tr>
-        <tr class="Type">
-            <td class="EmptyData"></td>
-            <td>V-았/었어야 됐는데 (했는데);<br>V-지 말았어야 됐는데<br>안 V-았/었어야 했는데</td>
-            <td class="EmptyData"></td>
-            <td>V-(으)셨어야 됐는데 </td>
-        </tr>
-        <tr class="Type">
-            <td class="EmptyData"></td>
-            <td>V-는 중이다</td>
-            <td>N 중이다</td>
-            <td>V-는 중이시다</td>
-        </tr>
-        <tr class="Example">
-            <td class="EmptyData"></td>
-            <td>먹는 중이에요.</td>
-            <td>식사 중이에요.</td>
-            <td>먹는 중이세요.</td>
-        </tr>
-        <tr class="Type">
-            <td class="EmptyData"></td>
-            <td> V-(으)ㄴ 후에<br>V-기 전에</td>
-            <td class="EmptyData"></td>
-            <td>V-(으)신 후에<br>V-(으)시기 전에</td>
-        </tr>
-        <tr class="Example">
-            <td class="EmptyData"></td>
-            <td>손을 씻은 후에 요리를 해야 돼요.<br>요리를 하기 전에 손을 씻어야 돼요.</td>
-            <td class="EmptyData"></td>
-            <td>손님, 음식은 곌제하신 후에 드셔야 돼요.</td>
-        </tr>
-        <tr class="Type">
-            <td class="EmptyData"></td>
-            <td>V-기로 하다/ 결심하다/ 마음을 먹다</td>
-            <td class="EmptyData"></td>
-            <td>V-(으)시기로 하시다</td>
-        </tr>
-        <tr class="Example">
-            <td class="EmptyData"></td>
-            <td>좋아하는 게임을 직접 만들 기회가 있다고 해서 이 전공을 선택하기로 했어요.</td>
-            <td class="EmptyData"></td>
-            <td>다음 주에 운동을 시작하시기로 하셨어요.</td>
-        </tr>
-        <tr class="Type">
-            <td class="EmptyData"></td>
-            <td>V-기 바라다</td>
-            <td class="EmptyData"></td>
-            <td>V-(으)시기 바라다;<br>건강/행복(N)하시기 바라다</td>
-        </tr>
-        <tr class="Example">
-            <td class="EmptyData"></td>
-            <td>즐거운 방학을 보내기 바랄게/바라요.<br><div style="color: red">x바래요(口語)</div></td>
-            <td class="EmptyData"></td>
-            <td>새해 복 많이 받으시기 바랍니다.</td>
-        </tr>
-        <tr class="Type">
-            <td class="EmptyData"></td>
-            <td>V-(으)ㅂ시다;<br>V-지 맙시다</td>
-            <td class="EmptyData"></td>
-            <td>Already in formal setting, use 겠어요?(ㄹ 까요?) for older people</td>
-        </tr>
-        <tr class="Example">
-            <td class="EmptyData"></td>
-            <td>조용히 합시다.<br>같이 불쌍한 아기를 도웁시다.</td>
-            <td class="EmptyData"></td>
-            <td>선생님, 저희하고 같이 밥을 드시겠어요?</td>
-        </tr>
-        <tr class="Type">
-            <td class="EmptyData"></td>
-            <td>V-ㄹ래요</td>
-            <td class="EmptyData"></td>
-            <td>Used in spoken language/ casual style only<br>V-겠습니다/겠어요</td>
-        </tr>
-        <tr class="Example">
-            <td colspan="2">A/V-거나 (아니면)<br>A/V-았/었거나</td>
-            <td class="EmptyData"></td>
-            <td>A-(으)시거나</td>
-        </tr>
-        <tr class="Example">
-            <td>빠르거나 느린 속도로 먹어도 상관 없어요.</td>
-            <td>모르는 것이 있거나 결석하면 박 선생님께 이메일을 보내야 합니다.</td>
-            <td class="EmptyData"></td>
-            <td>드시거나 안 드시거나 상관 없어요.</td>
-        </tr>
-        <tr class="Type">
-            <td colspan="2">A/V-(으)ㄹ 줄 몰랐다;<br>A/V-(으)ㄹ 줄 알았다</td>
-            <td>N 일 줄 몰랐다</td>
-            <td>V-(으)실 줄 몰랐다;<br>V-(으)실 줄 알았다</td>
-        </tr>
-        <tr class="Example">
-            <td>오늘이 그렇게 추울 줄 몰랐어요.</td>
-            <td>언젠가 일을 그만둘 줄 알았어요.</td>
-            <td>그 일이 그렇게 중요한 일일 줄 몰랐어요.</td>
-            <td>그렇게 빨리 드실 줄 몰랐어요.</td>
-        </tr>
-    </table>
+    <div class="navbar">
+        <button class="tablink" onclick="openPage('3002', this)" id="defaultOpen">KORE3002</button>
+        <div class="dropdown">
+            <button class="tablink" onclick="openPage('3062', this)">KORE3062</button>
+            <div class="dropdown-content">
+                <a href="#w1">수고했어 오늘도 -옥상달빛</a>
+                <a href="#w9">선재업고 튀어</a>
+            </div>
+        </div>
+    </div>
+    <div id="3002" class="tabcontent">
+        <table style="width: 100%;">
+            <tr> 
+                <th>형용사</th>
+                <th>동사</th>
+                <th>명사</th>
+                <th>존댓말</th>
+            </tr>
+            <tr class="Type">
+                <td colspan="2">A/V-았었으면 좋겠다</td>
+                <td>N-(이)였으면 좋겠다</td>
+                <td>A/V-(으)셨으면 좋겠다</td>
+            </tr>
+            <tr class="Example">
+                <td>너처럼 꼼꼼했으면 좋겠어요.</td>
+                <td>빨리 나았으면 좋겠어요.</td>
+                <td>한국 사람이였으면 좋겠어요.</td>
+                <td>아기를 낳으셨으면 좋겠어요.</td>
+            </tr>   
+            <tr class="Type">
+                <td>얼마나 A-(으)ㄴ데요</td>
+                <td>얼마나 V-는데요</td>
+                <td>얼마나 N-인데요</td>
+                <td>얼마나 A-(으)신데요<br>얼마나 V-(으)시는데요<br>얼마나 N-(이)신데요</td>
+            </tr>
+            <tr class="Example">
+                <td>얼마나 높은데요.</td>
+                <td>얼마나 웃기는데요.<br>얼마나 떨리는데요.</td>
+                <td>얼마나 힘든 일인데요.</td>
+                <td>얼마나 잘 벌으시는데요.<br>얼마나 멋진 분이신데요.</td>
+            </tr>
+            <tr class="Type">
+                <td>A-다면서요?</td>
+                <td>V-ㄴ/는다면서요?</td>
+                <td>N-(이)라면서요?</td>
+                <td>A-(으)시다면서요?<br>V-(으)신다면서요?<br>N-(이)시다면서요?</td>
+            </tr>  
+            <tr class="Example">
+                <td>비싼다면서요?</td>
+                <td>간다면서요?<br>안 먹는다면서요?</td>
+                <td>한국 사람이라면서요?</td>
+                <td>아프시다면서요?<br>아기를 낳으신다면서요?<br>선생님이라면서요?</td>
+            </tr>
+            <tr class="Type">
+                <td>A-다!</td>
+                <td>V-ㄴ/는다!</td>
+                <td>N-(이)다!</td>
+                <td>A-(으)시다!<br>V-(으)신다!<br>N-(이)시다!</td>
+            </tr>
+            <tr class="Example">
+                <td>진짜 맵다!</td>
+                <td>나비가 간다!<br>안 먹는다!</td>
+                <td>한국 사람이다!</td>
+                <td>어머니가 만드신다!</td>
+            </tr>
+            <tr class="Type">
+                <td>A-다면</td>
+                <td>V-ㄴ/는다면</td>
+                <td>N-(이)라면</td>
+                <td>A-(으)시다면<br>V-(으)신다면<br>N-(이)시라면</td>
+            </tr>
+            <tr class="Type">
+                <td class="EmptyData"></td>
+                <td>V-(으)ㄹ래요 </td>
+                <td class="EmptyData"></td>
+                <td>Used in spoken language/ casual style only<br>V-겠습니다/겠어요</td>
+            </tr>
+            <tr class="Example">
+                <td class="EmptyData"></td>
+                <td>배불러요. 그만 먹을래요.<br>뭐 먹을래?</td>
+                <td class="EmptyData"></td>
+                <td class="EmptyData"></td>
+            </tr>
+            <tr class="Type">
+                <td class="EmptyData"></td>
+                <td class="EmptyData"></td>
+                <td>N 때문에<br>Due to N</td>
+                <td class="EmptyData"></td>
+            </tr>
+            <tr class="Example">
+                <td class="EmptyData"></td>
+                <td class="EmptyData"></td>
+                <td>시간 때문에 못 가요.</td>
+                <td class="EmptyData"></td>
+            </tr>
+            <tr class="Type">
+                <td class="EmptyData"></td>
+                <td class="EmptyData"></td>
+                <td>N-(이)라서<br>N-(이)기 때문에</td>
+                <td class="EmptyData"></td>
+            </tr>
+            <tr class="Example">
+                <td class="EmptyData"></td>
+                <td class="EmptyData"></td>
+                <td>홍콩 사람이라서 한국어를 몰라요.</td>
+                <td class="EmptyData"></td>
+            </tr>
+            <tr class="Type">
+                <td class="EmptyData"></td>
+                <td>V-느라고</td>
+                <td class="EmptyData"></td>
+                <td>V-(으)시느라고</td>
+            </tr>
+            <tr class="Example">
+                <td class="EmptyData"></td>
+                <td>자느라고 수업에 늦었어요.</td>
+                <td class="EmptyData"></td>
+                <td>엄마가 주무시느라고 수업에 늦었어요.</td>
+            </tr>
+            <tr class="Type">
+                <td colspan="2">아무리 A/V-아/어도</td>
+                <td>아무리 N-(이)라도 </td>
+                <td>아무리 V/A-(으)셔도 </td>
+            </tr>
+            <tr class="Example">
+                <td>아무리 비싸도 살 거에요.</td>
+                <td>아무리 배불러도 꼭 디저트를 먹어야 돼요.</td>
+                <td>아무리 싼 가격이라도 안 살 거예요.</td>
+                <td>아무리 멋있으셔도 결혼 안 하겠어요.</td>
+            </tr>
+            <tr class="Type">
+                <td class="EmptyData"></td>
+                <td>
+                    V-기(가) A:<br>
+                    쉽다/어렵다<br>
+                    좋다/나쁘다<br>
+                    편하다/불편하다<br>
+                    힘들다/귀찮다
+                </td>
+                <td class="EmptyData"></td>
+                <td>V-(으)시기 A</td>
+            </tr>
+            <tr class="Example">
+                <td class="EmptyData"></td>
+                <td>먹기 힘들어요.</td>
+                <td class="EmptyData"></td>
+                <td>엄마는 한자가 외우시기 어렵다고 생각해요.</td>
+            </tr>
+            <tr class="Type">
+                <td colspan="2">A/V-거든요</td>
+                <td>N-(이)거든요</td>
+                <td>A/V-(으)시거든요<br>N-(이)시거든요</td>
+            </tr>
+            <tr class="Example">
+                <td>가격도 싸고 맛있거든요.</td>
+                <td>얼마전에 다쳤거든요.</td>
+                <td>오늘 휴관일이거든요.</td>
+                <td>선생님이 무서우시거든요.<br>교수님이시거든요.</td>
+            </tr>
+            <tr class="Type">
+                <td class="EmptyData"></td>
+                <td>V-았/었어야 됐는데 (했는데);<br>V-지 말았어야 됐는데<br>안 V-았/었어야 했는데</td>
+                <td class="EmptyData"></td>
+                <td>V-(으)셨어야 됐는데 </td>
+            </tr>
+            <tr class="Type">
+                <td class="EmptyData"></td>
+                <td>V-는 중이다</td>
+                <td>N 중이다</td>
+                <td>V-는 중이시다</td>
+            </tr>
+            <tr class="Example">
+                <td class="EmptyData"></td>
+                <td>먹는 중이에요.</td>
+                <td>식사 중이에요.</td>
+                <td>먹는 중이세요.</td>
+            </tr>
+            <tr class="Type">
+                <td class="EmptyData"></td>
+                <td> V-(으)ㄴ 후에<br>V-기 전에</td>
+                <td class="EmptyData"></td>
+                <td>V-(으)신 후에<br>V-(으)시기 전에</td>
+            </tr>
+            <tr class="Example">
+                <td class="EmptyData"></td>
+                <td>손을 씻은 후에 요리를 해야 돼요.<br>요리를 하기 전에 손을 씻어야 돼요.</td>
+                <td class="EmptyData"></td>
+                <td>손님, 음식은 곌제하신 후에 드셔야 돼요.</td>
+            </tr>
+            <tr class="Type">
+                <td class="EmptyData"></td>
+                <td>V-기로 하다/ 결심하다/ 마음을 먹다</td>
+                <td class="EmptyData"></td>
+                <td>V-(으)시기로 하시다</td>
+            </tr>
+            <tr class="Example">
+                <td class="EmptyData"></td>
+                <td>좋아하는 게임을 직접 만들 기회가 있다고 해서 이 전공을 선택하기로 했어요.</td>
+                <td class="EmptyData"></td>
+                <td>다음 주에 운동을 시작하시기로 하셨어요.</td>
+            </tr>
+            <tr class="Type">
+                <td class="EmptyData"></td>
+                <td>V-기 바라다</td>
+                <td class="EmptyData"></td>
+                <td>V-(으)시기 바라다;<br>건강/행복(N)하시기 바라다</td>
+            </tr>
+            <tr class="Example">
+                <td class="EmptyData"></td>
+                <td>즐거운 방학을 보내기 바랄게/바라요.<br><div style="color: red">x바래요(口語)</div></td>
+                <td class="EmptyData"></td>
+                <td>새해 복 많이 받으시기 바랍니다.</td>
+            </tr>
+            <tr class="Type">
+                <td class="EmptyData"></td>
+                <td>V-(으)ㅂ시다;<br>V-지 맙시다</td>
+                <td class="EmptyData"></td>
+                <td>Already in formal setting, use 겠어요?(ㄹ 까요?) for older people</td>
+            </tr>
+            <tr class="Example">
+                <td class="EmptyData"></td>
+                <td>조용히 합시다.<br>같이 불쌍한 아기를 도웁시다.</td>
+                <td class="EmptyData"></td>
+                <td>선생님, 저희하고 같이 밥을 드시겠어요?</td>
+            </tr>
+            <tr class="Type">
+                <td class="EmptyData"></td>
+                <td>V-ㄹ래요</td>
+                <td class="EmptyData"></td>
+                <td>Used in spoken language/ casual style only<br>V-겠습니다/겠어요</td>
+            </tr>
+            <tr class="Example">
+                <td colspan="2">A/V-거나 (아니면)<br>A/V-았/었거나</td>
+                <td class="EmptyData"></td>
+                <td>A-(으)시거나</td>
+            </tr>
+            <tr class="Example">
+                <td>빠르거나 느린 속도로 먹어도 상관 없어요.</td>
+                <td>모르는 것이 있거나 결석하면 박 선생님께 이메일을 보내야 합니다.</td>
+                <td class="EmptyData"></td>
+                <td>드시거나 안 드시거나 상관 없어요.</td>
+            </tr>
+            <tr class="Type">
+                <td colspan="2">A/V-(으)ㄹ 줄 몰랐다;<br>A/V-(으)ㄹ 줄 알았다</td>
+                <td>N 일 줄 몰랐다</td>
+                <td>V-(으)실 줄 몰랐다;<br>V-(으)실 줄 알았다</td>
+            </tr>
+            <tr class="Example">
+                <td>오늘이 그렇게 추울 줄 몰랐어요.</td>
+                <td>언젠가 일을 그만둘 줄 알았어요.</td>
+                <td>그 일이 그렇게 중요한 일일 줄 몰랐어요.</td>
+                <td>그렇게 빨리 드실 줄 몰랐어요.</td>
+            </tr>
+        </table>        
+    </div>
+    <div id="3062" class="tabcontent">
+        <table style="width: 100%;">
+            <tr>
+                <th>Translation</th>
+                <th>Example</th>
+                <th>Video</th>
+            </tr>
+            <tr>
+                <td>餵 to feed</td>
+                <td>얼마나 <box class="tooltip">먹여 <span class="tooltiptext">먹이다</span></box> 줘야 돼</td>
+                <td><iframe src="https://www.youtube.com/embed/RHZb_u3VOco?si=jz2Qw4MNd2tFfxUX&amp;start=779" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+            </tr>   
+        </table>
+        <hr>
+        <div id="w1">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/U3e4AOd-DzE?si=bx9KEBF2xaXOeUQR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <p>
+                세상 사람들 모두 정답을 <span class="tooltip">알긴 할까<span class="tooltiptext">V 긴 할까</span></span> 
+                <br>
+                <span class="tooltip">힘든 일은 왜 한번에 일어날까<span class="tooltiptext">힘든 일이 일어나다</span></span> 
+                <br>
+                <br>
+                <span class="tooltip">나에게 실망한<span class="tooltiptext">회사/학교에 실망하다</span> 하루</span> 
+                <br>
+                눈물이 보이기 싫어 의미 없이 밤 하늘만 바라봐
+                <br> 
+                <br>
+                작게 <span class="tooltip">열어 둔<span class="tooltiptext">-아/어 두다</span></span> 문틈 사이로
+                <br>
+                슬픔보다 더 큰 외로움이 다가와도 날
+            </p>
+        </div>
+        <hr>
+        <div id="w2">
+            <p>
+                선재업고 튀어
+            </p>
+        </div>
+        <div id="w3">
+            <p>
+                선재업고 튀어
+            </p>
+        </div>
+        <div id="w3">
+            <p>
+                선재업고 튀어
+            </p>
+        </div>
+        <div id="w4">
+            <p>
+                선재업고 튀어
+            </p>
+        </div>
+        <div id="w5">
+            <p>
+                선재업고 튀어
+            </p>
+        </div>
+        <div id="w6">
+            <p>
+                선재업고 튀어
+            </p>
+        </div>
+        <div id="w7">
+            <p>
+                선재업고 튀어
+            </p>
+        </div>
+        <div id="w8">
+            <p>
+                선재업고 튀어
+            </p>
+        </div>
+        <div id="w9">
+            <p>
+                선재업고 튀어
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function openPage(pageName,elmnt) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+            elmnt.style.backgroundColor = "white";
+            elmnt.style.color = "black";
+            document.getElementById(pageName).style.display = "block";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
     <!-- <form>
         <div class="question">
             Answer the question in the box below.

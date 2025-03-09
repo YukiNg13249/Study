@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="index.css">
-<style>
-</style>
+    <title>Login</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+    </style>
 </head>
 <body>
     <div class="container">
@@ -11,23 +12,31 @@
             <h1 style="margin-top: 100px;">Login</h1>
         </div>
         <div style="width:100%; text-align: center;">
-            <input type="text" id="name" placeholder="Enter your name in lowercases" style="width: 50%; margin: 10px;">
-            <button onclick="enterPage()">Enter</button>
+            <input type="text" id="name" placeholder="Enter your name in lowercases" onsubmit=enterPage() autofocus style="width: 50%; margin: 10px;">
+            <button id="submit" onclick="enterPage()">Submit</button>
         </div>
         <script>
+            var nameInput = document.getElementById("name");
+            nameInput.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    document.getElementById("submit").click();
+                }
+            }); 
             function enterPage() {
-                var name = document.getElementById("name").value;
+                var input = document.getElementById("name").value;
                 if (encryptedName() == "mh[r" || encryptedName() == "\\ms^g") {
-                    window.location.href = name + ".html";
+                    window.location.href = input + ".html";
                 } else {
-                    alert("Sorry" + name + ", you are not authorized to enter this page.");
+                    alert("Sorry " + input + ", you are not authorized to enter this page.");
+                    nameInput.value = "";
                 }
             }
             var encryptedName = function() {
-                var name = document.getElementById("name").value;
+                var input = document.getElementById("name").value;
                 var encrypted = "";
-                for (var i = 0; i < name.length; i++) {
-                    encrypted += String.fromCharCode(name.charCodeAt(i) - 7);
+                for (var i = 0; i < input.length; i++) {
+                    encrypted += String.fromCharCode(input.charCodeAt(i) - 7);
                 }
                 return encrypted;
             }
