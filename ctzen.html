@@ -56,7 +56,7 @@
             text-align: center;
         }
         .Example td {
-            font-size: x-small;
+            font-size: small;
         }
         .EmptyData {
             background-color: grey;
@@ -127,9 +127,9 @@
 </head>
 <body>
     <div class="navbar">
-        <button class="tablink" onclick="openPage('3002', this)">KORE3002</button>
+        <button class="tablink" onclick="openPage('3002', this)" id="defaultOpen">KORE3002</button>
         <div class="dropdown">
-            <button class="tablink" onclick="openPage('3062', this)" id="defaultOpen">KORE3062</button>
+            <button class="tablink" onclick="openPage('3062', this)">KORE3062</button>
             <div class="dropdown-content">
                 <a href="#w1">W1 수고했어 오늘도 -옥상달빛</a>
                 <a href="#w2">W2 선재업고 튀어</a>
@@ -204,7 +204,7 @@
                 <td class="EmptyData"></td>
                 <td>V-(으)ㄹ래요 </td>
                 <td class="EmptyData"></td>
-                <td>Used in spoken language/ casual style only<br>V-겠습니다/겠어요</td>
+                <td><b>Used in spoken language/ casual style only</b><br>V-겠습니다/겠어요</td>
             </tr>
             <tr class="Example">
                 <td class="EmptyData"></td>
@@ -290,7 +290,12 @@
             </tr>
             <tr class="Type">
                 <td class="EmptyData"></td>
-                <td>V-았/었어야 됐는데 (했는데);<br>V-지 말았어야 됐는데<br>안 V-았/었어야 했는데</td>
+                <td id="compare_regret2">
+                    V-았/었어야 됐는데 (했는데);
+                    <br>V-지 말았어야 됐는데
+                    <br>안 V-았/었어야 했는데
+                    <br><a href="#compare_regret1">Having <div class="tooltip">big regret<div class="tooltiptext">Smaller regret: V-(으)ㄹ 그랬다/ V-지 말걸 그랬다</div></div></a>
+                </td>
                 <td class="EmptyData"></td>
                 <td>V-(으)셨어야 됐는데 </td>
             </tr>
@@ -360,7 +365,7 @@
                 <td class="EmptyData"></td>
                 <td>Used in spoken language/ casual style only<br>V-겠습니다/겠어요</td>
             </tr>
-            <tr class="Example">
+            <tr class="Type">
                 <td colspan="2">A/V-거나 (아니면)<br>A/V-았/었거나</td>
                 <td class="EmptyData"></td>
                 <td>A-(으)시거나</td>
@@ -381,6 +386,58 @@
                 <td>언젠가 일을 그만둘 줄 알았어요.</td>
                 <td>그 일이 그렇게 중요한 일일 줄 몰랐어요.</td>
                 <td>그렇게 빨리 드실 줄 몰랐어요.</td>
+            </tr>
+            <tr class="Type">
+                <td>A-(으)ㄴ가 보다<br>A-았/었나 보다<br><b>Used only when there is <div class="tooltip" style="color: red;">clue<div class="tooltiptext">-은는 것 같다 can be used directly</div></div></b><br><b>문어체: still 보다 x본다</b></td>
+                <td>V-나 보다<br>V-았/었나 보다</td>
+                <td>N-인가 보다<br>N-였/이었나 보다</td>
+                <td>A-(으)시나 보다<br>V-(으)신가 보다<br>N-이신가 보다</td>
+            </tr>
+            <tr class="Example">
+                <td>고통한 모습을 보니까 이 숙제가 어려운가 봐요.</td>
+                <td>영화표가 벌써 다 팔렸네요. 재미있나 봐요 <div style="color: red;">(있다/없다special case for adj. as v.)</div></td>
+                <td>그 사람이 한국 사람인가 보다.</td>
+                <td>그 사람이 한국 사람이신가 보다.</td>
+            </tr>
+            <tr class="Type">
+                <td></td>
+                <td id="compare_regret1">V-(으)ㄹ걸 그랬다/ V-지 말걸 그랬다
+                    <br><b>Informal: -(으)ㄹ 걸</b>
+                    <br><b style="color: red;">Cannot be used with 3rd person</b>
+                    <br>People always having <a href="#compare_regret2" class="tooltip">small regret:<div class="tooltiptext">Regret something with serious impact/big regret<br>-았/었어야 했는데</div> </a> 껄무새
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="Example">
+                <td></td>
+                <td>돈을 좀 아껴 쓸걸 그랬다.</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="Type">
+                <td></td>
+                <td>V-(으)려면 V-아/어야 해요// V-(으)면 돼요// V-(으)세요// -이/가 필요해요.</td>
+                <td></td>
+                <td>V-(으)시려면</td>
+            </tr>
+            <tr class="Example">
+                <td></td>
+                <td>충동 구매를 안 하려면 카드보다 현금을 써야 해요.</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="Type">
+                <td></td>
+                <td></td>
+                <td>-(이)나 <=> -밖에 안/못</td>
+                <td></td>
+            </tr>
+            <tr class="Example">
+                <td></td>
+                <td></td>
+                <td>집부터 학교까지 삼십 분이나 걸려요.<br>집부터 학교까지 삼십 분밖에 안 걸려요.</td>
+                <td></td>
             </tr>
         </table>        
     </div>
