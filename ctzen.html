@@ -70,7 +70,8 @@
             cursor: pointer;
             padding: 14px 16px;
             font-size: 17px;
-            width: 50%;
+            width: 33%;
+            height: 50px;
         }
 
         .tablink:hover {
@@ -96,7 +97,9 @@
             display: none;
             background-color: #f9f9f9;
             min-width: 160px;
-            padding-top: 50px;
+            position: fixed;
+            margin-top: 50px;
+            width: 100%;
         }
 
         .dropdown-content a {
@@ -113,7 +116,7 @@
         }
 
         .dropdown:hover .dropdown-content {
-            display:block;
+            display: block;
         }
 
         .adverb {
@@ -138,6 +141,7 @@
                 <a href="#w6">W6 김비서가 왜 그럴까?</a>
             </div>
         </div>
+        <button class="tablink" onclick="openPage('forMe', this)">For Me</button>
     </div>
     <div id="3002" class="tabcontent">
         <table style="width: 100%;">
@@ -391,13 +395,15 @@
                 <td>A-(으)ㄴ가 보다<br>A-았/었나 보다<br><b>Used only when there is <div class="tooltip" style="color: red;">clue<div class="tooltiptext">-은는 것 같다 can be used directly</div></div></b><br><b>문어체: still 보다 x본다</b></td>
                 <td>V-나 보다<br>V-았/었나 보다</td>
                 <td>N-인가 보다<br>N-였/이었나 보다</td>
-                <td>A-(으)시나 보다<br>V-(으)신가 보다<br>N-이신가 보다</td>
+                <td id="eg_seems1">A-(으)신가 보다<br>V-(으)시나 보다<br>N-이신가 보다</td>
             </tr>
             <tr class="Example">
                 <td>고통한 모습을 보니까 이 숙제가 어려운가 봐요.</td>
                 <td>영화표가 벌써 다 팔렸네요. 재미있나 봐요 <div style="color: red;">(있다/없다special case for adj. as v.)</div></td>
                 <td>그 사람이 한국 사람인가 보다.</td>
-                <td>그 사람이 한국 사람이신가 보다.</td>
+                <td><a onclick="openPage('forMe',document.getElementById('forMe'))" href="#id_seems2">엄마가 너무 예쁘신가 보다.</a> 
+                    <br>그 사람이 한국 사람이신가 보다.
+                </td>
             </tr>
             <tr class="Type">
                 <td></td>
@@ -442,19 +448,6 @@
         </table>        
     </div>
     <div id="3062" class="tabcontent">
-        <table style="width: 100%;">
-            <tr>
-                <th>Translation</th>
-                <th>Example</th>
-                <th>Video</th>
-            </tr>
-            <tr>
-                <td>餵 to feed</td>
-                <td>얼마나 <box class="tooltip">먹여 <span class="tooltiptext">먹이다</span></box> 줘야 돼</td>
-                <td><iframe src="https://www.youtube.com/embed/RHZb_u3VOco?si=jz2Qw4MNd2tFfxUX&amp;start=779" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
-            </tr>   
-        </table>
-        <hr>
         <div id="w1">
             <h2>수고했어 오늘도 -옥상달빛</h2>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/U3e4AOd-DzE?si=bx9KEBF2xaXOeUQR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -731,6 +724,27 @@
         <div id="w6">
             <h3>김비서가 왜 그럴까?</h3>
         </div>
+    </div>
+    <div id="forMe" class="tabcontent">
+        <table style="width: 100%;">
+            <tr>
+                <th>Translation</th>
+                <th>Example</th>
+                <th>Video</th>
+            </tr>
+            <tr>
+                <td>먹이다</td>
+                <td>餵 to feed</td>
+                <td>얼마나 <box class="tooltip">먹여 <span class="tooltiptext">먹이다</span></box> 줘야 돼</td>
+                <td><iframe src="https://www.youtube.com/embed/RHZb_u3VOco?si=jz2Qw4MNd2tFfxUX&amp;start=779" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+            </tr>   
+            <tr>
+                <td>A-(으)신가 보다</td>
+                <td>睇嚟 It seems that</td>
+                <td id="eg_seems2">엄마가 너무 <a onclick="openPage('3002',getElementById('3002'))" href="#eg_seems1">예쁘신가 보다</a>.</td>
+                <td><iframe src="https://www.youtube.com/embed/RHZb_u3VOco?si=N2QxLsQDjT-ctJW9&amp;start=554" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+            </tr>
+        </table>        
     </div>
 
     <script>
