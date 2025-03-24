@@ -51,6 +51,7 @@
 
         table, th, td {
             border: 1px solid black;
+            padding: 3px;
         }
         td {
             text-align: center;
@@ -81,7 +82,7 @@
         .tabcontent {
             color: black;
             display: none;  
-            height: 100%;
+            /* height: 100%; */
             padding-top: 50px;
             margin-left: 3%;
             margin-right: 3%;
@@ -164,7 +165,7 @@
             </tr>
             <tr class="Type">
                 <td>A-(으)ㄴ N</td>
-                <td>Past: V-(으)ㄴ N
+                <td><a id="eg_past_behavior2" href="#eg_past_behavior1">Past: V-(으)ㄴ N</a>
                     <br>
                     Present: V-는 N
                     <br>
@@ -198,10 +199,10 @@
                 <td>A/V-(으)셨으면 좋겠다</td>
             </tr>
             <tr class="Example">
-                <td>너처럼 꼼꼼했으면 좋겠어요.</td>
-                <td>빨리 나았으면 좋겠어요.</td>
-                <td>한국 사람이였으면 좋겠어요.</td>
-                <td>아기를 낳으셨으면 좋겠어요.</td>
+                <td>너처럼 <b>꼼꼼했으면 좋겠</b>어요.</td>
+                <td>빨리 <b>나았으면 좋겠</b>어요.</td>
+                <td>한국 <b>사람이였으면 좋겠</b>어요.</td>
+                <td>아기를 <b>낳으셨으면 좋겠</b>어요.</td>
             </tr>   
             <tr class="Type">
                 <td>얼마나 A-(으)ㄴ데요</td>
@@ -210,10 +211,10 @@
                 <td>얼마나 A-(으)신데요<br>얼마나 V-(으)시는데요<br>얼마나 N-(이)신데요</td>
             </tr>
             <tr class="Example">
-                <td>얼마나 높은데요.</td>
-                <td>얼마나 웃기는데요.<br>얼마나 떨리는데요.</td>
-                <td>얼마나 힘든 일인데요.</td>
-                <td>얼마나 잘 벌으시는데요.<br>얼마나 멋진 분이신데요.</td>
+                <td>얼마나 <b>높은데</b>요.</td>
+                <td>얼마나 <b>웃기는데</b>요.<br>얼마나 <b>떨리는데</b>요.</td>
+                <td>얼마나 <b>힘든 일인데</b>요.</td>
+                <td>얼마나 잘 <b>벌으시는데</b>요.<br>얼마나 멋진 <b>분이신데</b>요.</td>
             </tr>
             <tr class="Type">
                 <td>A-다면서요?</td>
@@ -496,14 +497,14 @@
                 <td class="tdIsEmpty"></td>
                 <td>V-던 
                     <br>
-                    <div class="tooltip">
+                    <a class="tooltip" id="eg_past_behavior1" href="#eg_past_behavior2">
                         <b>자주//종종 Use for repeated behavior in the past</b>
                         <br>
                         <b>아까// 좀 전에 Not completed behavior</b>
                         <div class="tooltiptext">
                             V-(으)ㄴ: Used for completed behavior in the past
                         </div>
-                    </div>
+                    </a>
                 </td>
                 <td class="tdIsEmpty"></td>
                 <td>V-(으)시던</td>
@@ -525,7 +526,7 @@
             </tr>
             <tr class="Example">
                 <td class="tdIsEmpty"></td>
-                <td>이 근처에 먹을 만한 돗이 있어요?</td>
+                <td>이 근처에 <b class="tooltip">먹을 만한<div class="tooltiptext">use as descriptive verb X하는</div></b> 곳이 있어요?</td>
                 <td class="tdIsEmpty"></td>
                 <td></td>
             </tr>
@@ -537,11 +538,14 @@
             </tr>
             <tr class="Example">
                 <td class="tdIsEmpty"></td>
-                <td>민형이랑 헤어진 지 일주일 밖에 안 지났어요.</td>
+                <td>민형이랑 <b>헤어진 지</b> 일주일 밖에 안 지났어요.</td>
                 <td class="tdIsEmpty"></td>
-                <td>아버지는 일하신 지 얼마 안 됐어요.</td>
+                <td>아버지는 <b>일하신 지</b> 얼마 안 됐어요.</td>
             </tr>
-        </table>        
+        </table>   
+        <table style="width: 100%;">
+
+        </table>
     </div>
     <div id="3062" class="tabcontent">
         <div id="w1">
@@ -1083,7 +1087,24 @@
             </tr>
         </table>        
     </div>
-
+    <div>
+        <table style="width: 100%;">
+            <tr>
+                <th>Stem form</th>
+                <th>-아/어서</th>
+                <th>-(으)니까</th>
+                <th>-았/었으면</th>
+                <th>-네요</th>
+            </tr>
+            <tr>
+                <th>낫다</th>
+                <td>나아서</td>
+                <td>나으니까</td>
+                <td>나았으면</td>
+                <td>낫네요</td>
+            </tr>
+        </table>
+    </div>
     <script>
         function openPage(pageName,elmnt) {
             var i, tabcontent, tablinks;
