@@ -136,6 +136,15 @@
             background-color: #e0e0e0;
             font-style: italic;
         }
+
+        .regular {
+            background-color: grey;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -165,7 +174,7 @@
             </tr>
             <tr class="Type">
                 <td>A-(으)ㄴ N</td>
-                <td><a id="eg_past_behavior2" href="#eg_past_behavior1">Past: V-(으)ㄴ N</a>
+                <td><a id="eg_past_behavior2" href="#eg_past_behavior1" class="tooltip">Past: V-(으)ㄴ N</a>
                     <br>
                     Present: V-는 N
                     <br>
@@ -188,13 +197,13 @@
                 </td>
             </tr>
             <tr class="Example">
-                <td><div class="tooltip">긴<div class="tooltiptext">길+ㄴ drop ㄹ</div> 모리</div></td>
-                <td>혼자 먹는 걸 좋아해요.</td>
+                <td><div class="tooltip"><b>긴</b><div class="tooltiptext">길+ㄴ drop ㄹ</div> 모리</div></td>
+                <td>혼자 <b>먹는 걸</b> 좋아해요.</td>
                 <td class="tdIsEmpty"></td>
-                <td>예쁜 여자</td>
+                <td><b>예쁘신</b> 여자</td>
             </tr>
             <tr class="Type">
-                <td colspan="2">A/V-았었으면 좋겠다</td>
+                <td colspan="2"><a class="tooltip" href="#eg_wish1" id="eg_wish2">A/V-았었으면 좋겠다</a></td>
                 <td>N-(이)였으면 좋겠다</td>
                 <td>A/V-(으)셨으면 좋겠다</td>
             </tr>
@@ -223,10 +232,15 @@
                 <td>A-(으)시다면서요?<br>V-(으)신다면서요?<br>N-(이)시다면서요?</td>
             </tr>  
             <tr class="Example">
-                <td>비싼다면서요?</td>
-                <td>간다면서요?<br>안 먹는다면서요?</td>
-                <td>한국 사람이라면서요?</td>
-                <td>아프시다면서요?<br>아기를 낳으신다면서요?<br>선생님이라면서요?</td>
+                <td><b>비싸다면서요</b>?</td>
+                <td><b>간다면서요?</b><br><b>안 먹는다면서요?</b></td>
+                <td>한국 <b>사람이라면서요</b>?</td>
+                <td><b>아프시다면서요?</b>
+                    <br>
+                    아기를 <b>낳으신다면서요?</b>
+                    <br>
+                    <b>선생님이라면서요?</b>
+                </td>
             </tr>
             <tr class="Type">
                 <td>A-다!</td>
@@ -235,64 +249,118 @@
                 <td>A-(으)시다!<br>V-(으)신다!<br>N-(이)시다!</td>
             </tr>
             <tr class="Example">
-                <td>진짜 맵다!</td>
-                <td>나비가 간다!<br>안 먹는다!</td>
-                <td>한국 사람이다!</td>
-                <td>어머니가 만드신다!</td>
+                <td>진짜 <b>맵다!</b></td>
+                <td>나비가 <b>간다!</b><br><b>안 먹는다!</b></td>
+                <td>한국 <b>사람이다!</b></td>
+                <td>어머니가 <b>만드신다!</b></td>
             </tr>
             <tr class="Type">
-                <td>A-다면</td>
+                <td>A-다면
+                    <br>
+                    Use in unrealistiv situation
+                </td>
                 <td>V-ㄴ/는다면</td>
                 <td>N-(이)라면</td>
                 <td>A-(으)시다면<br>V-(으)신다면<br>N-(이)시라면</td>
             </tr>
+            <tr class="Example">
+                <td><b>비싸다면</b> 사지 마세요.</td>
+                <td>안 <b>산다면</b> 빨리 가세요.</b><br>
+                <td>한국 <b>사람이라면</b> 한국어를 잘 해야 돼요.</td>
+                <td>아프시다면 <b>병원에 가세요.</b></td>
+            </tr>
             <tr class="Type">
                 <td class="tdIsEmpty"></td>
-                <td>V-(으)ㄹ래요 </td>
+                <td>V-(으)ㄹ게요
+                    <br>
+                    Use when making promise with speaker's will
+                    <br>
+                    Volunteer to do something
+                    <br>
+                    <b style="color: red;">Only used for 1st person</b>
+                    <br>
+                    <b style="color: red;">Cannot be used in question</b>
+                </td>
                 <td class="tdIsEmpty"></td>
-                <td><b>Used in spoken language/ casual style only</b><br>V-겠습니다/겠어요</td>
+                <td rowspan="3">V-겠습니다/겠어요
+                    <br>
+                    Used in formal intention
+                </td>
             </tr>
             <tr class="Example">
                 <td class="tdIsEmpty"></td>
-                <td>배불러요. 그만 먹을래요.<br>뭐 먹을래?</td>
-                <td class="tdIsEmpty"></td>
+                <td>내일 <b>갈게요.</b>
+                    <br>
+                    제가 <b>할게요.</b>
+                </td>
                 <td class="tdIsEmpty"></td>
             </tr>
             <tr class="Type">
                 <td class="tdIsEmpty"></td>
+                <td>V-(으)ㄹ래요
+                    <br>
+                    Use to express speaker's will
+                    <br>
+                    Use in asking listener's opinion/ making suggestions
+                    <br>
+                    <b style="color: red;">Only used for 1st person</b>
+                </td>
                 <td class="tdIsEmpty"></td>
-                <td>N 때문에<br>Due to N</td>
+            </tr>
+            <tr class="Example">
+                <td class="tdIsEmpty"></td>
+                <td>배불러요. 그만 <b>먹을래요</b>.<br>뭐 <b>먹을래</b>?</td>
+                <td class="tdIsEmpty"></td>
+                <td>
+                    제가 <b>도와 드리겠습니다</b>.
+                </td>
+            </tr>
+            <tr class="Type">
+                <td class="tdIsEmpty"></td>
+                <td class="tdIsEmpty"></td>
+                <td>N 때문에<br>Because of N</td>
                 <td class="tdIsEmpty"></td>
             </tr>
             <tr class="Example">
                 <td class="tdIsEmpty"></td>
                 <td class="tdIsEmpty"></td>
-                <td>시간 때문에 못 가요.</td>
+                <td><b>시간 때문에</b> 못 가요.</td>
                 <td class="tdIsEmpty"></td>
             </tr>
             <tr class="Type">
                 <td class="tdIsEmpty"></td>
                 <td class="tdIsEmpty"></td>
-                <td>N-(이)라서<br>N-(이)기 때문에</td>
+                <td>N-(이)라서<br>N-(이)기 때문에<br>Because it is N</td>
                 <td class="tdIsEmpty"></td>
             </tr>
             <tr class="Example">
                 <td class="tdIsEmpty"></td>
                 <td class="tdIsEmpty"></td>
-                <td>홍콩 사람이라서 한국어를 몰라요.</td>
+                <td>홍콩 <b>사람이라서</b> 한국어를 몰라요.</td>
                 <td class="tdIsEmpty"></td>
             </tr>
             <tr class="Type">
                 <td class="tdIsEmpty"></td>
-                <td>V-느라고</td>
+                <td>V(present tense)-느라고 
+                    <br>
+                    Use when choosing to do action1 leading to not doing action2
+                    <br>
+                    <b style="color: red;">
+                        Only be used with present tense verb X병원에 갔
+                        <br>
+                        Cannot be used with sudden/short/uncontrollable action like
+                        <br>
+                        넘어지다/떨어지다/일어나다//태푸이 오다/감기에 걸다
+                    </b>
+                </td>
                 <td class="tdIsEmpty"></td>
                 <td>V-(으)시느라고</td>
             </tr>
             <tr class="Example">
                 <td class="tdIsEmpty"></td>
-                <td>자느라고 수업에 늦었어요.</td>
+                <td><b>자느라고</b> 수업에 늦었어요.</td>
                 <td class="tdIsEmpty"></td>
-                <td>엄마가 주무시느라고 수업에 늦었어요.</td>
+                <td>엄마가 <b>주무시느라고</b> 수업에 늦었어요.</td>
             </tr>
             <tr class="Type">
                 <td colspan="2">아무리 A/V-아/어도</td>
@@ -300,10 +368,10 @@
                 <td>아무리 V/A-(으)셔도 </td>
             </tr>
             <tr class="Example">
-                <td>아무리 비싸도 살 거에요.</td>
-                <td>아무리 배불러도 꼭 디저트를 먹어야 돼요.</td>
-                <td>아무리 싼 가격이라도 안 살 거예요.</td>
-                <td>아무리 멋있으셔도 결혼 안 하겠어요.</td>
+                <td><b>아무리 비싸도</b> 살 거에요.</td>
+                <td><b>아무리 배불러도</b> 꼭 디저트를 먹어야 돼요.</td>
+                <td><b>아무리 싼 가격이라도</b> 안 살 거예요.</td>
+                <td><b>아무리 멋있으셔도</b> 결혼 안 하겠어요.</td>
             </tr>
             <tr class="Type">
                 <td class="tdIsEmpty"></td>
@@ -319,20 +387,23 @@
             </tr>
             <tr class="Example">
                 <td class="tdIsEmpty"></td>
-                <td>먹기 힘들어요.</td>
+                <td><b>먹기 힘들어</b>요.</td>
                 <td class="tdIsEmpty"></td>
-                <td>엄마는 한자가 외우시기 어렵다고 생각해요.</td>
+                <td>엄마는 한자가 <b>외우시기 어렵</b>다고 생각해요.</td>
             </tr>
             <tr class="Type">
-                <td colspan="2">A/V-거든요</td>
+                <td colspan="2">A/V-거든요
+                    <br>
+                    <b class="tooltip">Use for telling something listener doesn't know<div class="tooltiptext">-잖아요 Use for telling somthing listener know</div></b>
+                </td>
                 <td>N-(이)거든요</td>
                 <td>A/V-(으)시거든요<br>N-(이)시거든요</td>
             </tr>
             <tr class="Example">
-                <td>가격도 싸고 맛있거든요.</td>
-                <td>얼마전에 다쳤거든요.</td>
-                <td>오늘 휴관일이거든요.</td>
-                <td>선생님이 무서우시거든요.<br>교수님이시거든요.</td>
+                <td>가격도 싸고 <b>맛있거든요</b>.</td>
+                <td>얼마전에 <b>다쳤거든요</b>.</td>
+                <td>오늘 <b>휴관일이거든요</b>.</td>
+                <td>선생님이 <b>무서우시거든요</b>.<br><b>교수님이시거든요</b>.</td>
             </tr>
             <tr class="Type">
                 <td class="tdIsEmpty"></td>
@@ -345,17 +416,29 @@
                 <td class="tdIsEmpty"></td>
                 <td>V-(으)셨어야 됐는데 </td>
             </tr>
+            <tr class="Example">
+                <td class="tdIsEmpty"></td>
+                <td>미리 <b>샀어야 했는데</b>.</td>
+                <td class="tdIsEmpty"></td>
+                <td>좀 <b>참아쎴어야 됐는데</b>.</td>
+            </tr>
             <tr class="Type">
                 <td class="tdIsEmpty"></td>
-                <td>V-는 중이다</td>
+                <td>V-는 중이다 = V-고 있다
+                    <br>
+                    <div style="color: red;">중 Cannot by used for 입다/좋아하다</div>
+                </td>
                 <td>N 중이다</td>
                 <td>V-는 중이시다</td>
             </tr>
             <tr class="Example">
                 <td class="tdIsEmpty"></td>
-                <td>먹는 중이에요.</td>
-                <td>식사 중이에요.</td>
-                <td>먹는 중이세요.</td>
+                <td><b>먹는 중이</b>에요.
+                    <br>
+                    <b>고치는 중이</b>에요.
+                </td>
+                <td><b>식사 중이</b>에요.</td>
+                <td><b>먹는 중이세</b>요.</td>
             </tr>
             <tr class="Type">
                 <td class="tdIsEmpty"></td>
@@ -365,7 +448,7 @@
             </tr>
             <tr class="Example">
                 <td class="tdIsEmpty"></td>
-                <td>손을 씻은 후에 요리를 해야 돼요.<br>요리를 하기 전에 손을 씻어야 돼요.</td>
+                <td>손을 <b>씻은 후에</b> 요리를 해야 돼요.<br>요리를 <b>하기 전에</b> 손을 씻어야 돼요.</td>
                 <td class="tdIsEmpty"></td>
                 <td>손님, 음식은 곌제하신 후에 드셔야 돼요.</td>
             </tr>
@@ -377,25 +460,39 @@
             </tr>
             <tr class="Example">
                 <td class="tdIsEmpty"></td>
-                <td>좋아하는 게임을 직접 만들 기회가 있다고 해서 이 전공을 선택하기로 했어요.</td>
+                <td>좋아하는 게임을 직접 만들 기회가 있다고 해서 이 전공을 <b>선택하기로 했어</b>요.</td>
                 <td class="tdIsEmpty"></td>
-                <td>다음 주에 운동을 시작하시기로 하셨어요.</td>
+                <td>다음 주에 운동을 <b>시작하시기로 하셨</b>어요.</td>
             </tr>
             <tr class="Type">
                 <td class="tdIsEmpty"></td>
-                <td>V-기 바라다</td>
+                <td>V-기 바라다
+                    <br>
+                    Used in formal setting/ ceremonial greetings
+                    <br>
+                    <a class="tooltip" id="eg_wish1" href="#eg_wish2">Wish to listener and used after verb excpet 건강하시기/행복하시기<div class="tooltiptext" >A/V-았었으면 좋겠다: Wish for both listener or speaker, used after adj and verb</div></div>
+                    <br>
+                    <div style="color: red">x바래요(口語)</div>
+                  
+                </td>
                 <td class="tdIsEmpty"></td>
                 <td>V-(으)시기 바라다;<br>건강/행복(N)하시기 바라다</td>
             </tr>
             <tr class="Example">
                 <td class="tdIsEmpty"></td>
-                <td>즐거운 방학을 보내기 바랄게/바라요.<br><div style="color: red">x바래요(口語)</div></td>
+                <td>즐거운 방학을 <b>보내기 바랄게/바라</b>요.  
+                </td>
                 <td class="tdIsEmpty"></td>
-                <td>새해 복 많이 받으시기 바랍니다.</td>
+                <td>새해 복 많이 <b>받으시기 바랍</b>니다.</td>
             </tr>
             <tr class="Type">
                 <td class="tdIsEmpty"></td>
-                <td>V-(으)ㅂ시다;<br>V-지 맙시다</td>
+                <td>V-(으)ㅂ시다;
+                    <br>
+                    V-지 맙시다
+                    <br>
+                    Used in formal setting for suggestion
+                </td>
                 <td class="tdIsEmpty"></td>
                 <td>Already in formal setting, use 겠어요?(ㄹ 까요?) for older people</td>
             </tr>
@@ -406,21 +503,20 @@
                 <td>선생님, 저희하고 같이 밥을 드시겠어요?</td>
             </tr>
             <tr class="Type">
-                <td class="tdIsEmpty"></td>
-                <td>V-ㄹ래요</td>
-                <td class="tdIsEmpty"></td>
-                <td>Used in spoken language/ casual style only<br>V-겠습니다/겠어요</td>
-            </tr>
-            <tr class="Type">
                 <td colspan="2">A/V-거나 (아니면)<br>A/V-았/었거나</td>
                 <td class="tdIsEmpty"></td>
                 <td>A-(으)시거나</td>
             </tr>
             <tr class="Example">
-                <td>빠르거나 느린 속도로 먹어도 상관 없어요.</td>
-                <td>모르는 것이 있거나 결석하면 박 선생님께 이메일을 보내야 합니다.</td>
+                <td><b>빠르거나</b> 느린 속도로 먹어도 상관 없어요.</td>
+                <td>모르는 것이 <b>있거나</b> 결석하면 박 선생님께 이메일을 보내야 합니다.
+                    <br>
+                    여행을 <b>가거나</b> 외식을 <div class="tooltip">하는 데<div class="tooltiptext">To do a certain thing V-는 데</div></div> 많이 써요.
+                    <br>
+                    너무 많이 <b>타거나</b> 무거운 짐을 <div class="tooltip">싣지<div class="tooltiptext">load</div></div> 않습니다.
+                </td>
                 <td class="tdIsEmpty"></td>
-                <td>드시거나 안 드시거나 상관 없어요.</td>
+                <td><b>드시거나</b> 안 드시거나 상관 없어요.</td>
             </tr>
             <tr class="Type">
                 <td colspan="2">A/V-(으)ㄹ 줄 몰랐다;<br>A/V-(으)ㄹ 줄 알았다</td>
@@ -428,10 +524,10 @@
                 <td>V-(으)실 줄 몰랐다;<br>V-(으)실 줄 알았다</td>
             </tr>
             <tr class="Example">
-                <td>오늘이 그렇게 추울 줄 몰랐어요.</td>
-                <td>언젠가 일을 그만둘 줄 알았어요.</td>
-                <td>그 일이 그렇게 중요한 일일 줄 몰랐어요.</td>
-                <td>그렇게 빨리 드실 줄 몰랐어요.</td>
+                <td>오늘이 그렇게 <b>추울 줄 몰랐</b>어요.</td>
+                <td>언젠가 일을 <b>그만둘 줄 알았</b>어요.</td>
+                <td>그 일이 그렇게 중요한 <b>일일 줄 몰랐</b>어요.</td>
+                <td>그렇게 빨리 <b>드실 줄 몰랐</b>어요.</td>
             </tr>
             <tr class="Type">
                 <td>A-(으)ㄴ가 보다<br>A-았/었나 보다<br><b>Used only when there is <div class="tooltip" style="color: red;">clue<div class="tooltiptext">-은는 것 같다 can be used directly</div></div></b><br><b>문어체: still 보다 x본다</b></td>
@@ -440,9 +536,9 @@
                 <td id="eg_seems1">A-(으)신가 보다<br>V-(으)시나 보다<br>N-이신가 보다</td>
             </tr>
             <tr class="Example">
-                <td>고통한 모습을 보니까 이 숙제가 어려운가 봐요.</td>
-                <td>영화표가 벌써 다 팔렸네요. 재미있나 봐요 <div style="color: red;">(있다/없다special case for adj. as v.)</div></td>
-                <td>그 사람이 한국 사람인가 보다.</td>
+                <td>고통한 모습을 보니까 이 숙제가 <b>어려운가 봐</b>요.</td>
+                <td>영화표가 벌써 다 팔렸네요. <b>재미있나 봐</b>요 <div style="color: red;">(있다/없다special case for adj. as v.)</div></td>
+                <td>그 사람이 한국 <b>사람인가 보</b>다.</td>
                 <td>
                     <a onclick="openPage('forMe',document.getElementById('forMe'))" href="#id_seems2">엄마가 너무 예쁘신가 보다.</a> 
                     <br>
@@ -465,13 +561,21 @@
             </tr>
             <tr class="Example">
                 <td class="tdIsEmpty"></td>
-                <td>돈을 좀 아껴 <b>쓸걸 그랬다.</b></td>
+                <td>돈을 좀 아껴 <b>쓸걸 그랬다.</b>
+                    <br>
+                    너무 많이<b>시키지 말걸 그랬</b>다.
+                    <br>
+                    백중원: 두 게 <b>시키걸</b>.
+                </td>
                 <td class="tdIsEmpty"></td>
                 <td class="tdIsEmpty"></td>
             </tr>
             <tr class="Type">
                 <td class="tdIsEmpty"></td>
-                <td>V-(으)려면<br>V-아/어야 해요// V-(으)면 돼요// V-(으)세요// -이/가 필요해요 // -는 게 좋아요// -아/어 보세요.</td>
+                <td>V-(으)려면<br>V-아/어야 해요// V-(으)면 돼요// V-(으)세요// -이/가 필요해요 // -는 게 좋아요// -아/어 보세요.
+                    <br>
+                    = V-려고 하면
+                </td>
                 <td class="tdIsEmpty"></td>
                 <td>V-(으)시려면</td>
             </tr>
@@ -1087,14 +1191,46 @@
             </tr>
         </table>        
     </div>
+    <hr>
     <div>
-        <table style="width: 100%;">
+        <table style="width: 100%; margin-top: 10px;">
             <tr>
-                <th>Stem form</th>
+                <th>Stem form
+                    <br>
+                    ㄷ + ㅇ = ㄹ
+                    <br>
+                    ㄹ + ㅂ/ㄴ/ㅅ = ㄹ 탈락
+                    <br>
+                    ㅅ + ㅇ = ㅅ 탈락
+                </th>
                 <th>-아/어서</th>
                 <th>-(으)니까</th>
                 <th>-았/었으면</th>
                 <th>-네요</th>
+                <th>A-(으)ㄴ데요
+                    <br>
+                    V-는데요
+                    <br>
+                    N-인데요
+                </th>
+                <th>-느라고</th>
+            </tr>
+            <tr>
+                <th>벌다</th>
+                <td>벌어서</td>
+                <td>벌으니까</td>
+                <td>벌었으면</td>
+                <td>버네요</td>
+                <td>버는데요</td>
+            </tr>
+            <tr>
+                <th>수다를 떨다</th>
+                <td>수다를 떨어서</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>수다를 떠느라고</td>
             </tr>
             <tr>
                 <th>낫다</th>
@@ -1103,6 +1239,54 @@
                 <td>나았으면</td>
                 <td>낫네요</td>
             </tr>
+            <tr>
+                <th>짓다</th>
+                <td>지어서</td>
+                <td>지으니까</td>
+                <td>지었으면</td>
+                <td>짓네요</td>
+            </tr>
+            <tr>
+                <th>붓다</th>
+                <td>부어서</td>
+                <td>부으니까</td>
+                <td>부었으면</td>
+                <td>붓네요</td>
+            </tr>
+            <tr class="regular">
+                <th>씻다</th>
+                <td>씻어서</td>
+                <td>씻으니까</td>
+                <td>씻었으면</td>
+                <td>씻네요</td>
+            </tr>
+            <tr class="regular">
+                <th>벗다</th>
+                <td>벗어서</td>
+                <td>벗으니까</td>
+                <td>벗었으면</td>
+                <td>벗네요</td>
+            </tr>
+            <tr class="regular">
+                <th>웃다</th>
+                <td>웃어서</td>
+                <td>웃으니까</td>
+                <td>웃었으면</td>
+                <td>웃네요</td>
+            </tr>
+        </table>
+        <table style="width: 100%;">
+            <tr>
+                <th>Stem form</th>
+                <th>POS</th>
+                <th>Examples</th>
+            </tr>
+            <tr>
+                <th>-있다</th>
+                <td>adj. but use follow grammar of v.</td>
+                <td><b>-있는</b> 드라마를 좋아해요.</td>
+            </tr>
+
         </table>
     </div>
     <script>
