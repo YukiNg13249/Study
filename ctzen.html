@@ -149,9 +149,9 @@
 </head>
 <body>
     <div class="navbar">
-        <button class="tablink" onclick="openPage('3002', this)">KORE3002</button>
+        <button class="tablink" onclick="openPage('3002', this)" id="defaultOpen">KORE3002</button>
         <div class="dropdown">
-            <button class="tablink" onclick="openPage('3062', this)" id="defaultOpen" >KORE3062</button>
+            <button class="tablink" onclick="openPage('3062', this)"  >KORE3062</button>
             <div class="dropdown-content">
                 <a href="#w1">W1 수고했어 오늘도 -옥상달빛</a>
                 <a href="#w2">W2 선재업고 튀어</a>
@@ -456,7 +456,14 @@
             </tr>
             <tr class="Type">
                 <td class="tdIsEmpty"></td>
-                <td>V-기로 하다/ 결심하다/ 마음을 먹다</td>
+                <td>V-기로 하다/ 결심하다/ 마음을 먹다
+                    <br>
+                    <a class="tooltip" id="type_plan1">~90% plan<div class="tooltiptext">
+                        ~90%: V-기로 하다/결심하다/마음을 먹다 also for 퇴직/졸업<br>
+                        ~70%: V-(으)려고 하다 also for 問路<br>
+                        ~50%: V-(으)ㄹ까 하다 thinking of
+                    </div></a>
+                </td>
                 <td class="tdIsEmpty"></td>
                 <td>V-(으)시기로 하시다</td>
             </tr>
@@ -674,6 +681,82 @@
                     <br>
                     N-이신 편이다
                 </td>
+            </tr>
+            <tr class="Example">
+                <td>나는 아침잠이 <b>많은/작은 편이</b>에요.</td>
+                <td>저는 운동을 많이 <b>하는 편이</b>에요.</td>
+                <td>저는 <b>감성적인 편이</b>에요.
+                    <br>
+                    저는 음식에 <b>진심인 편이</b>에요.
+                </td>
+                <td>엄마는 <b>웃기시는 편이</b>에요. </td>
+            </tr>
+            <tr class="Type">
+                <td class="tdIsEmpty"></td>
+                <td class="tdIsEmpty"></td>
+                <td>N 같다</td>
+                <td>N 같으시다</td>
+            </tr>
+            <tr class="Example">
+                <td class="tdIsEmpty"></td>
+                <td class="tdIsEmpty"></td>
+                <td>그 사람은 한국 <b>사람 같아</b>.</td>
+                <td>선생님은 <b>한국 분 같으시다</b>.</td>
+            </tr>
+            <tr class="Type">
+                <td class="tdIsEmpty"></td>
+                <td class="tdIsEmpty"></td>
+                <td>N 같이 V</td>
+                <td class="tdIsEmpty"></td>
+            </tr>
+            <tr class="Example">
+                <td class="tdIsEmpty"></td>
+                <td class="tdIsEmpty"></td>
+                <td>고은 씨는 노래를 <b>가수같이 잘 부러</b>요.</td>
+                <td class="tdIsEmpty"></td>
+            </tr>
+            <tr class="Type">
+                <td class="tdIsEmpty"></td>
+                <td class="tdIsEmpty"></td>
+                <td>N 같은 N</td>
+                <td class="tdIsEmpty"></td>
+            </tr>
+            <tr class="Example">
+                <td class="tdIsEmpty"></td>
+                <td class="tdIsEmpty"></td>
+                <td>저는 <b>마원 같은 성공한 사업가</b>가 되는 것이 꿈이에요.</td>
+                <td class="tdIsEmpty"></td>
+            </tr>
+            <tr class="Type">
+                <td class="tdIsEmpty"></td>
+                <td>V-(으)ㄹ까 하다
+                    <br>
+                    <a class="tooltip" href="#type_plan1" id="#type_plan3">~50% plan</a>
+                    <br>
+                    <b style="color: red;">Cannot be used in question/future/못</b>
+                </td>
+                <td class="tdIsEmpty"></td>
+                <td class="tdIsEmpty"></td>
+            </tr>
+            <tr class="Example">
+                <td class="tdIsEmpty"></td>
+                <td>내일은 집에서 쉴까 해요.</td>
+                <td class="tdIsEmpty"></td>
+                <td class="tdIsEmpty"></td>
+            </tr>
+            <tr class="Type">
+                <td colspan="2">A/V-(으)ㄹ 테니까
+                    <br>
+                    추측/의지(분담할 때) and give 제안/조언
+                </td>
+                <td>N-(이)ㄹ 테니까</td>
+                <td>V-(으)실 테니까</td>
+            </tr>
+            <tr class="Example">
+                <td>날씨가 <b>추울 테니까</b>...</td>
+                <td>비가 <b>올 테니까</b> 우산을 가져가는 게 어때요?</td>
+                <td>그 사람도 이 일을 하는 건 <b>처음일 테니까</b> 잘 도와주세요.</td>
+                <td>내일은 선생님이 <b>오실 테니까</b> 집을 잘 정리하세요.</td>
             </tr>
         </table>   
     </div>
