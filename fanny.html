@@ -51,6 +51,12 @@
         text-decoration: none;
         color: black;
     }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+    }
 </style>
 </head>
 <body>
@@ -157,6 +163,72 @@
                 </tr>
             </table>
         </div>
+        <div id="polynomial">
+            <h2>Polynomial</h2>
+            <ul>
+                <li>Degree of polynomial: <div class="tooltip"> >2次方 宜家學係3
+                    <div class="tooltiptext">
+                        1 Linear Equation<br>
+                        2 Quadratic Equation<br>
+                    </div></div>
+                </li>
+                <li>Polynomial function: f(x) = (Divisor)(Quotient)+Remainder
+                    <table>
+                        <tr>
+                            <th>Dividend = f(x)</th>
+                            <th>Divisor</th>
+                            <th>Quotient</th>
+                            <th>Remainder</th>
+                            <th>Theorem</th>
+                        </tr>
+                        <tr>
+                            <th>f(x) is divisible by x-3</th>
+                            <td>x-3</td>
+                            <td>ax<sup>2</sup>+bx+c</td>
+                            <td>0(divisible by)</td>
+                            <td>f(3)=0</td>
+                        </tr>
+                        <tr>
+                            <th>When f(x) is divided by 2x-1, the remainder is -110.</th>
+                            <td>2x-1</td>
+                            <td>ax<sup>2</sup>+bx+c</td>
+                            <td>-110</td>
+                            <td>f(1/2)=-110</td>
+                        </tr>
+                    </table>
+                </li>
+                <li>Coefficient of <i>x<sup>n</sup></i>:  <i>x<sup>n</sup></i> 前面的數  Constant term: 常數,冇<i>x</i>的數
+                    <table>
+                        <tr>
+                            <td colspan="9"> 
+                                f(x)=-4x<sup>3</sup>+3x<sup>2</sup>x-1+k
+                                <br>
+                                g(x)=-kx+k<sup>2</sup>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Terms</th>
+                            <th>-4x<sup>3</sup></th>
+                            <th>+3x<sup>2</sup></th>
+                            <th>x</th>
+                            <th>-kx</th>
+                            <th></th>
+                            <th>-1+k</th>
+                            <th>k<sup>2</sup></th>
+                        </tr>
+                        <tr>
+                            <th>Coefficient of terms(x,x<sup>2</sup>,x<sup>3</sup>)</th>
+                            <td>-4</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>-k</td>
+                            <th>Constant term</th>
+                            <td>-1+k</td>
+                            <td>k<sup>2</sup></td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
     </div>
     <div class="questions">
         <h2>2024/25 Second UT</h2>
@@ -210,10 +282,12 @@
         </div>
         <img src="6-7.jpg" alt="2024/25 Second UT Q6-7" width="100%">
         <div class="questionItem" id="25ut2q6">
-           The marked price of a mobile phone is 50% above its cost. A profit of $60 is made by selling the mobile phone at a discount of 30% on its marked price. Find the marked price of the mobile phone. (4marks)
+           6. The <div class="tooltip">marked price of a mobile phone is 50% above its cost <div class="tooltiptext">m=(1+50%)c</div></div>. 
+           A <div class="tooltip">profit of $60 is made by selling the mobile phone at a discount of 30% on its marked price <div class="tooltiptext">60=s-c<br>s=(1-30%)m<br>60=(1-30%)m-c</div></div>. 
+           Find the marked price of the mobile phone. (4marks)
         </div>
         <div class="questionItem" id="25ut2q7">
-            Simplify <math display="inline">
+            7. Simplify <math display="inline">
                 <mrow>
                     <mfrac linethickness="1">
                         <mrow>
@@ -228,36 +302,46 @@
         </div>
         <img src="8.jpg" alt="2024/25 Second UT Q8" width="100%">
         <div class="questionItem" id="25ut2q8">
-            8.A cubic polynomialf(x) is divisible1, the remainder is110.
-            divided by x²+2x-1.
+            8. A <a class="tooltip" href="#polynomial">cubic polynomial f(x)</a> is <div class="tooltip">divisible by x-3 <div class="tooltiptext">f(3)=0</div></div>. 
+            <div class="tooltip">When f(x) is divided by 2x-1, the remainder is -110 <div class="tooltiptext">f(<math display="inline"><mfrac><mrow><mi>1</mi></mrow><mrow><mi>2</mi></mrow></mfrac></math>)= -110</div>.</div>
+            <div class="tooltip">When f(x) is divided by x²+2x-1, the remainder is -51x-85.<div class="tooltiptext">f(x)=(x²+2x-1)(ax+b)-51x-85</div></div> Find the <div class="tooltip">quotient <div class="tooltiptext">(ax+b)</div></div> when f(x) is divided by x²+2x-1.
+            (4 marks)
         </div>
         <img src="9.jpg" alt="2024/25 Second UT Q9" width="100%">
         <div class="questionItem" id="25ut2q9">
-            9. A bag contains 5 red balls, 4 blue balls and 3 green balls. If a ball is drawn at random from the bag, find the probability that it is:
-            <br>(a) a red ball,
-            <br>(b) not a blue ball,
-            <br>(c) a green ball or a blue ball.
+            9. Billy bought a van which cost $800 000 in 2010. The value $P of the van after n years can be represented by the following formula:
+            <br>
+            P = 800 000(1- <math display="inline"><mfrac><mi>r</mi><mn>100</mn></mfrac></math>)<sup>n</sup>, where r is a constant.
+            <br>
+            It is known that the value of the van was $737 280 in 2012.
+            <br>
+            (a) Find the value of r.
+            <br>
+            (b) Find the decrease in the value of the van in 2017 when compared with its value in 2012.
+            <br>
+            (Give the answer correct to 3 significant figures.)
+            (5 marks)
         </div>
         <img src="10.jpg" alt="2024/25 Second UT Q10" width="100%">
         <div class="questionItem" id="25ut2q10">
-            10. A bag contains 5 red balls, 4 blue balls and 3 green balls. If a ball is drawn at random from the bag, find the probability that it is:
-            <br>(a) a red ball,
-            <br>(b) not a blue ball,
-            <br>(c) a green ball or a blue ball.
+            10. (a)Solve log (y + 66) = 2 + log y.
+            <br>
+            (b)Using the result of (a), solve <div class="tooltip">log (2<sup>x</sup> + 66)= 2 +log 2<sup>x</sup> <div class="tooltiptext">格式一樣</div></div> corect to 3 significant figures.
+            (6 marks)
         </div>
         <img src="11.jpg" alt="2024/25 Second UT Q11" width="100%">
         <div class="questionItem" id="25ut2q11">
-            11. A bag contains 5 red balls, 4 blue balls and 3 green balls. If a ball is drawn at random from the bag, find the probability that it is:
-            <br>(a) a red ball,
-            <br>(b) not a blue ball,
-            <br>(c) a green ball or a blue ball.
+            11.  Solve the flollowing exponential equations.
+            (a)3<sup>3x-1</sup>+ 2(27<sup>x</sup>)-3<sup>3x+1</sup>=-18.
+            <br>
+            (b)
         </div>
         <img src="12.jpg" alt="2024/25 Second UT Q12" width="100%">
         <div class="questionItem" id="25ut2q12">
-            12. A bag contains 5 red balls, 4 blue balls and 3 green balls. If a ball is drawn at random from the bag, find the probability that it is:
-            <br>(a) a red ball,
-            <br>(b) not a blue ball,
-            <br>(c) a green ball or a blue ball.
+            12. Given that log<sub>3</sub>2 = p and log<sub>2</sub>5=q, express the following in terms of p and q.
+            2(a) log<sub>3</sub>
+            (b)  log.s 27(2 marks)
+            (2 marks)
         </div>
         <img src="13.jpg" alt="2024/25 Second UT Q13" width="100%">
         <div class="questionItem" id="25ut2q13">
