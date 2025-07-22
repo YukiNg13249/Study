@@ -60,25 +60,191 @@
 </style>
 </head>
 <body>
+    <div>
+        <script>
+            const questionBank = [
+            { question: "q1.png", answer: "a1.png" },
+            { question: "q2.png", answer: "a2.png" },
+            { question: "q3.png", answer: "a3.png" },
+            { question: "q4.png", answer: "a4.png" },
+            { question: "q5.png", answer: "a5.png" },
+            { question: "q6.png", answer: "a6.png" },
+            { question: "q7.png", answer: "a7.png" },
+            { question: "q8.png", answer: "a8.png" },
+            { question: "q9.png", answer: "a9.png" },
+            { question: "q10.png", answer: "a10.png" },
+            { question: "q11.png", answer: "a11.png" },
+            { question: "q12.png", answer: "a12.png" },
+            { question: "q13.png", answer: "a13.png" }
+            ];
+
+            let remainingQuestions = [...questionBank];
+            let displayedPairs = [];
+            let selectedImages = [];
+
+            function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+            }
+            }
+
+            function loadGame() {
+            const gameContainer = document.getElementById("game");
+            gameContainer.innerHTML = "";
+
+            if (remainingQuestions.length === 0) {
+            alert("Game Over! All questions have been asked.");
+            return;
+            }
+
+            shuffle(remainingQuestions);
+            displayedPairs = remainingQuestions.slice(0, 6);
+            const allImages = [];
+
+            displayedPairs.forEach(pair => {
+            const questionImg = document.createElement("img");
+            questionImg.src = pair.question;
+            questionImg.className = "question";
+            questionImg.dataset.pair = JSON.stringify(pair);
+            questionImg.onclick = () => handleImageClick(questionImg);
+            questionImg.style.width = "150px";
+            questionImg.style.height = "150px";
+            questionImg.style.objectFit = "contain";
+            allImages.push(questionImg);
+
+            const answerImg = document.createElement("img");
+            answerImg.src = pair.answer;
+            answerImg.className = "answer";
+            answerImg.dataset.pair = JSON.stringify(pair);
+            answerImg.onclick = () => handleImageClick(answerImg);
+            answerImg.style.width = "150px";
+            answerImg.style.height = "150px";
+            answerImg.style.objectFit = "contain";
+            allImages.push(answerImg);
+            });
+
+            shuffle(allImages);
+            allImages.forEach(img => gameContainer.appendChild(img));
+            }
+
+            function handleImageClick(image) {
+            if (selectedImages.includes(image)) {
+            // Deselect the image if clicked again
+            image.style.border = "";
+            selectedImages = selectedImages.filter(img => img !== image);
+            return;
+            }
+
+            if (selectedImages.length < 2) {
+            image.style.border = "2px solid blue";
+            selectedImages.push(image);
+
+            if (selectedImages.length === 2) {
+            checkAnswer();
+            }
+            }
+            }
+
+            function checkAnswer() {
+            const [firstImage, secondImage] = selectedImages;
+            const firstPair = JSON.parse(firstImage.dataset.pair);
+            const secondPair = JSON.parse(secondImage.dataset.pair);
+
+            if (
+            (firstPair.question === secondPair.question && firstPair.answer === secondPair.answer) ||
+            (firstPair.answer === secondPair.question && firstPair.question === secondPair.answer)
+            ) {
+            alert("Correct Match!");
+
+            // Replace matched images with new ones
+            const gameContainer = document.getElementById("game");
+            const images = Array.from(gameContainer.querySelectorAll("img"));
+
+            images.forEach(img => {
+                const imgPair = JSON.parse(img.dataset.pair);
+                if (
+                (imgPair.question === firstPair.question && imgPair.answer === firstPair.answer) ||
+                (imgPair.question === secondPair.question && imgPair.answer === secondPair.answer)
+                ) {
+                img.remove(); // Remove the matched image
+                }
+            });
+
+            // Remove matched pairs from displayedPairs and remainingQuestions
+            displayedPairs = displayedPairs.filter(
+                pair => pair !== firstPair && pair !== secondPair
+            );
+            remainingQuestions = remainingQuestions.filter(
+                pair => pair !== firstPair && pair !== secondPair
+            );
+
+            // Add new pairs to replace the matched ones
+            if (remainingQuestions.length > 0) {
+                shuffle(remainingQuestions);
+                const newPair = remainingQuestions.shift();
+                displayedPairs.push(newPair);
+
+                const questionImg = document.createElement("img");
+                questionImg.src = newPair.question;
+                questionImg.className = "question";
+                questionImg.dataset.pair = JSON.stringify(newPair);
+                questionImg.onclick = () => handleImageClick(questionImg);
+                questionImg.style.width = "150px";
+                questionImg.style.height = "150px";
+                questionImg.style.objectFit = "contain";
+
+                const answerImg = document.createElement("img");
+                answerImg.src = newPair.answer;
+                answerImg.className = "answer";
+                answerImg.dataset.pair = JSON.stringify(newPair);
+                answerImg.onclick = () => handleImageClick(answerImg);
+                answerImg.style.width = "150px";
+                answerImg.style.height = "150px";
+                answerImg.style.objectFit = "contain";
+
+                gameContainer.appendChild(questionImg);
+                gameContainer.appendChild(answerImg);
+            }
+            } else {
+            alert("Wrong Match! Try Again.");
+            }
+
+            // Reset selection
+            selectedImages.forEach(img => (img.style.border = ""));
+            selectedImages = [];
+            }
+
+            window.onload = loadGame;
+        </script>
+    </div>
+<style>
+    #game img {
+        object-fit: cover;
+    }
+</style>
+
+<div id="game" style="display: flex; flex-wrap: wrap; gap: 10px;"></div>
+    </div>
     <div class="keypoints">
         <div id="factorization">
-            <h2>Factorization</h2>
+            <h2>Factorizatio8</h2>
             <ol>
-                <li>抽公因數 Common Factor</li>
-                <li>Group the terms into pairs.</li>
+                <li>抽公因數 Common Fa9or</li>
+                <li>Group the terms into0 pairs.</10>
                 <li>三項式
                     <ul>
-                        <li>
-                            <math display="inline">
+     11                 <li>
+                            <math di12lay="inline">
                                 <mrow>
-                                    <msup>
-                                        <mi>a</mi>
-                                        <mn>2</mn>
-                                    </msup>
+    13                              <msup>
+                     14                 <mi>a</mi>
+                              15        <mn>2</mn>
+                                    </m16p>
                                     <mo>-</mo>
-                                    <msup>
-                                        <mi>b</mi>
-                                        <mn>2</mn>
+         17                       11>
+                                 18    <mi>b</mi>
+                                        <mn>219n>
                                     </msup>
                                     <mo>=</mo>
                                     <mrow>
@@ -86,7 +252,7 @@
                                         <mi>a</mi>
                                         <mo>+</mo>
                                         <mi>b</mi>
-                                        <mo>)</mo>
+            12                      <mo>)</mo>
                                         <mo>(</mo>
                                         <mi>a</mi>
                                         <mo>-</mo>
@@ -197,11 +363,7 @@
                         </tr>
                     </table>
                 </li>
-                <li>Coefficient of <i>x<sup>n</sup></i>:  <i>x<sup>n</sup></i> 前面的數  Constant term: 常數,冇<i>x</i>的數
-                    <table>
-                        <tr>
-                            <td colspan="9"> 
-                                f(x)=-4x<sup>3</sup>+3x<sup>2</sup>x-1+k
+                <li>Coefficient of <i>x<sup>n</  <td colspan="9">                       f(x)=-4x<sup>3</sup>+3x<sup>2</sup>x-1+k
                                 <br>
                                 g(x)=-kx+k<sup>2</sup>
                             </td>

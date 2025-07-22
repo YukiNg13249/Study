@@ -25,7 +25,7 @@
             }); 
             function enterPage() {
                 var input = document.getElementById("name").value;
-                if (encryptedName() == "mh[r" || encryptedName() == "\\ms^g") {
+                if (encryptedName() == "mh[r" || encryptedName() == "\\ms^g" || encryptedName() == "_Zggr") {
                     window.location.href = input + ".html";
                 } else {
                     alert("Sorry " + input + ", you are not authorized to enter this page.");
@@ -38,6 +38,7 @@
                 for (var i = 0; i < input.length; i++) {
                     encrypted += String.fromCharCode(input.charCodeAt(i) - 7);
                 }
+                console.log("Encrypted name: " + encrypted);
                 return encrypted;
             }
         </script>
