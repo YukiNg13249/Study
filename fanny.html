@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="index.css">
@@ -224,8 +224,676 @@
     }
 </style>
 
-<div id="game" style="display: flex; flex-wrap: wrap; gap: 10px;"></div>
+<div id="game" style="display: flex; flex-wrap: wrap; gap: 10px;"></div> -->
+    <!-- </div> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Matching Game</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        button {
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        #game {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 25px;
+            min-height: 400px;
+        }
+
+        #game img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            border: 3px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #game img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        #game img.selected {
+            border-color: #3498db;
+            transform: scale(1.05);
+        }
+
+        #game img.matched {
+            border-color: #2ecc71;
+            opacity: 0.7;
+            cursor: default;
+        }
+
+        .feedback {
+            text-align: center;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .feedback.correct {
+            background-color: #d5f5e3;
+            color: #27ae60;
+            opacity: 1;
+        }
+
+        .feedback.incorrect {
+            background-color: #fadbd8;
+            color: #e74c3c;
+            opacity: 1;
+        }
+
+        .instructions {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .instructions h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .instructions p {
+            margin-bottom: 10px;
+            line-height: 1.5;
+            color: #5a6c7d;
+        }
+
+        .completion-message {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #d5f5e3 0%, #e8f8f5 100%);
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .completion-message h2 {
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+
+        .completion-message p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            #game img {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .game-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .stats {
+                justify-content: space-around;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #game img {
+                width: 110px;
+                height: 110px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+
+        /* Animation for correct match */
+        @keyframes correctMatch {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .correct-match {
+            animation: correctMatch 0.5s ease;
+        }
+
+                
+        /* Animation for reshuffling */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Image Matching Game</h1>
+            <p class="subtitle">Match each question with its correct answer</p>
+        </header>
+        
+        <div class="game-info">
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-value" id="matches">0</div>
+                    <div class="stat-label">Matches</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="attempts">0</div>
+                    <div class="stat-label">Attempts</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="remaining">13</div>
+                    <div class="stat-label">Remaining</div>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="newGame">New Game</button>
+                <button id="hint">How to Play</button>
+            </div>
+        </div>
+        
+        <div class="feedback" id="feedback"></div>
+        
+        <div id="game"></div>
+
+        <div class="completion-message" id="completionMessage">
+            <h2>Congratulations!</h2>
+            <p>You've successfully matched all the images!</p>
+            <button id="playAgain">Play Again</button>
+        </div>
     </div>
+
+    <script>
+        const questionBank = [
+            { question: "q1.png", answer: "a1.png" },
+            { question: "q2.png", answer: "a2.png" },
+            { question: "q3.png", answer: "a3.png" },
+            { question: "q4.png", answer: "a4.png" },
+            { question: "q5.png", answer: "a5.png" },
+            { question: "q6.png", answer: "a6.png" },
+            { question: "q7.png", answer: "a7.png" },
+            { question: "q8.png", answer: "a8.png" },
+            { question: "q9.png", answer: "a9.png" },
+            { question: "q10.png", answer: "a10.png" },
+            { question: "q11.png", answer: "a11.png" },
+            { question: "q12.png", answer: "a12.png" },
+            { question: "q13.png", answer: "a13.png" }
+        ];
+
+        let remainingQuestions = [...questionBank];
+        let displayedPairs = [];
+        let selectedImages = [];
+        let matchCount = 0;
+        let attemptCount = 0;
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function loadGame() {
+            const gameContainer = document.getElementById("game");
+            gameContainer.innerHTML = "";
+
+            console.log("Remaining questions:", remainingQuestions.length);
+            if (remainingQuestions.length === 0) {
+                document.getElementById('completionMessage').style.display = 'block';
+                return;
+            }
+
+            // Take the first 6 pairs from remainingQuestions
+            displayedPairs = remainingQuestions.slice(0, 6);
+            
+            // Remove the displayed pairs from remainingQuestions so they don't repeat
+            remainingQuestions = remainingQuestions.slice(6);
+            
+            const allImages = [];
+
+            displayedPairs.forEach(pair => {
+                const questionImg = document.createElement("img");
+                questionImg.src = pair.question;
+                questionImg.alt = "Question Image";
+                questionImg.className = "question";
+                questionImg.dataset.pair = JSON.stringify(pair);
+                questionImg.onclick = () => handleImageClick(questionImg);
+                allImages.push(questionImg);
+
+                const answerImg = document.createElement("img");
+                answerImg.src = pair.answer;
+                answerImg.alt = "Answer Image";
+                answerImg.className = "answer";
+                answerImg.dataset.pair = JSON.stringify(pair);
+                answerImg.onclick = () => handleImageClick(answerImg);
+                allImages.push(answerImg);
+            });
+
+            shuffle(allImages);
+            allImages.forEach(img => gameContainer.appendChild(img));
+            
+            updateStats();
+        }
+
+        function checkAnswer() {
+            const [firstImage, secondImage] = selectedImages;
+            const firstPair = JSON.parse(firstImage.dataset.pair);
+            const secondPair = JSON.parse(secondImage.dataset.pair);
+
+            const feedback = document.getElementById('feedback');
+            
+            // Check if the images form a valid pair
+            if (
+                (firstPair.question === secondPair.question && firstPair.answer === secondPair.answer) ||
+                (firstPair.answer === secondPair.question && firstPair.question === secondPair.answer)
+            ) {
+                // Correct match
+                feedback.textContent = "Correct Match!";
+                feedback.className = 'feedback correct';
+                
+                // Mark as matched
+                firstImage.classList.add('matched', 'correct-match');
+                secondImage.classList.add('matched', 'correct-match');
+                firstImage.classList.remove('selected');
+                secondImage.classList.remove('selected');
+                
+                matchCount++;
+                
+                // Remove matched pair from game
+                setTimeout(() => {
+                    const gameContainer = document.getElementById("game");
+                    
+                    // Helper function to compare pairs by content
+                    function isSamePair(pair1, pair2) {
+                        return pair1.question === pair2.question && pair1.answer === pair2.answer;
+                    }
+                    
+                    // Remove the matched pair from displayedPairs
+                    displayedPairs = displayedPairs.filter(
+                        pair => !isSamePair(pair, firstPair)
+                    );
+                    
+                    console.log("After removal - displayedPairs:", displayedPairs.length);
+                    console.log("After removal - remainingQuestions:", remainingQuestions.length);
+
+                    // Add new pair if available
+                    if (remainingQuestions.length > 0) {
+                        const newPair = remainingQuestions.shift();
+                        displayedPairs.push(newPair);
+                        
+                        console.log("Added new pair, displayedPairs now:", displayedPairs.length);
+                        
+                        // Remove all current images
+                        gameContainer.innerHTML = '';
+                        
+                        // Create new set of images from current displayedPairs
+                        const allImages = [];
+                        
+                        displayedPairs.forEach(pair => {
+                            const questionImg = document.createElement("img");
+                            questionImg.src = pair.question;
+                            questionImg.alt = "Question Image";
+                            questionImg.className = "question fade-in";
+                            questionImg.dataset.pair = JSON.stringify(pair);
+                            questionImg.onclick = () => handleImageClick(questionImg);
+                            allImages.push(questionImg);
+
+                            const answerImg = document.createElement("img");
+                            answerImg.src = pair.answer;
+                            answerImg.alt = "Answer Image";
+                            answerImg.className = "answer fade-in";
+                            answerImg.dataset.pair = JSON.stringify(pair);
+                            answerImg.onclick = () => handleImageClick(answerImg);
+                            allImages.push(answerImg);
+                        });
+
+                        // Shuffle and add all images
+                        shuffle(allImages);
+                        allImages.forEach(img => gameContainer.appendChild(img));
+                        
+                    } else {
+                        // If no new pairs, just keep the current matched images displayed
+                        // but remove the selection highlighting
+                        console.log("No more pairs to add");
+                    }
+
+                    // Check if game is over (no more pairs to display)
+                    if (matchCount === 13 && remainingQuestions.length === 0) {
+                        setTimeout(() => {
+                            document.getElementById('completionMessage').style.display = 'block';
+                        }, 500);
+                    }
+
+                    updateStats();
+                    resetSelection();
+                }, 1000);
+                
+            } else {
+                // Wrong match
+                feedback.textContent = "Wrong Match! Try Again.";
+                feedback.className = 'feedback incorrect';
+                
+                setTimeout(() => {
+                    firstImage.classList.remove('selected');
+                    secondImage.classList.remove('selected');
+                    resetSelection();
+                    feedback.className = 'feedback';
+                }, 1000);
+            }
+            
+            updateStats();
+        }
+
+        function newGame() {
+            remainingQuestions = [...questionBank];
+            displayedPairs = [];
+            selectedImages = [];
+            matchCount = 0;
+            attemptCount = 0;
+            document.getElementById('completionMessage').style.display = 'none';
+            document.getElementById('feedback').className = 'feedback';
+            loadGame();
+        }
+        function handleImageClick(image) {
+            // Ignore if already matched or already selected
+            if (image.classList.contains('matched') || image.classList.contains('selected')) {
+                return;
+            }
+
+            // Deselect if clicking the same image again
+            if (selectedImages.includes(image)) {
+                image.classList.remove('selected');
+                selectedImages = selectedImages.filter(img => img !== image);
+                return;
+            }
+
+            // Select the image
+            image.classList.add('selected');
+            selectedImages.push(image);
+
+            if (selectedImages.length === 2) {
+                attemptCount++;
+                checkAnswer();
+            }
+        }
+
+        // function checkAnswer() {
+        //     const [firstImage, secondImage] = selectedImages;
+        //     const firstPair = JSON.parse(firstImage.dataset.pair);
+        //     const secondPair = JSON.parse(secondImage.dataset.pair);
+
+        //     const feedback = document.getElementById('feedback');
+            
+        //     // Check if the images form a valid pair
+        //     if (
+        //         (firstPair.question === secondPair.question && firstPair.answer === secondPair.answer) ||
+        //         (firstPair.answer === secondPair.question && firstPair.question === secondPair.answer)
+        //     ) {
+        //         // Correct match
+        //         feedback.textContent = "Correct Match!";
+        //         feedback.className = 'feedback correct';
+                
+        //         // Mark as matched
+        //         firstImage.classList.add('matched', 'correct-match');
+        //         secondImage.classList.add('matched', 'correct-match');
+        //         firstImage.classList.remove('selected');
+        //         secondImage.classList.remove('selected');
+                
+        //         matchCount++;
+                
+        //         // Remove matched pair from game
+        //         setTimeout(() => {
+        //             const gameContainer = document.getElementById("game");
+                    
+        //             // Remove matched pair from remaining questions
+        //             remainingQuestions = remainingQuestions.filter(
+        //                 pair => !(pair.question === firstPair.question && pair.answer === firstPair.answer) &&
+        //                         !(pair.question === secondPair.question && pair.answer === secondPair.answer)
+        //             );
+        //             remainingQuestions.forEach(pair => console.log(pair, firstPair, secondPair, (pair.question === firstPair.question), (pair.answer === secondPair.answer)));
+
+        //             // Remove from displayedPairs
+        //             displayedPairs = displayedPairs.filter(
+        //                 pair => !(pair.question === firstPair.question && pair.answer === firstPair.answer) &&
+        //                         !(pair.question === secondPair.question && pair.answer === secondPair.answer)
+        //             );
+
+        //             // Add new pair if available
+        //             if (remainingQuestions.length > 0) {
+        //                 const newPair = remainingQuestions.shift();
+        //                 displayedPairs.push(newPair);
+                        
+        //                 // Create new images for the new pair only
+        //                 const questionImg = document.createElement("img");
+        //                 questionImg.src = newPair.question;
+        //                 questionImg.alt = "Question Image";
+        //                 questionImg.className = "question fade-in";
+        //                 questionImg.dataset.pair = JSON.stringify(newPair);
+        //                 questionImg.onclick = () => handleImageClick(questionImg);
+                        
+        //                 const answerImg = document.createElement("img");
+        //                 answerImg.src = newPair.answer;
+        //                 answerImg.alt = "Answer Image";
+        //                 answerImg.className = "answer fade-in";
+        //                 answerImg.dataset.pair = JSON.stringify(newPair);
+        //                 answerImg.onclick = () => handleImageClick(answerImg);
+                        
+        //                 // Get all current images (including matched ones)
+        //                 const currentImages = Array.from(gameContainer.querySelectorAll('img'));
+                        
+        //                 // Add the new images to the current ones
+        //                 currentImages.push(questionImg, answerImg);
+                        
+        //                 // Reshuffle all images
+        //                 shuffle(currentImages);
+                        
+        //                 // Clear container and re-add all images in new order
+        //                 gameContainer.innerHTML = '';
+        //                 currentImages.forEach(img => {
+        //                     img.classList.add('fade-in');
+        //                     gameContainer.appendChild(img);
+        //                 });
+        //             } else {
+        //                 // If no new pairs, just reshuffle the current images
+        //                 const currentImages = Array.from(gameContainer.querySelectorAll('img'));
+        //                 shuffle(currentImages);
+                        
+        //                 // Clear container and re-add images in new order
+        //                 gameContainer.innerHTML = '';
+        //                 currentImages.forEach(img => {
+        //                     img.classList.add('fade-in');
+        //                     gameContainer.appendChild(img);
+        //                 });
+        //             }
+
+        //             // Check if game is over
+        //             if (remainingQuestions.length === 0 && displayedPairs.length === 0) {
+        //                 setTimeout(() => {
+        //                     document.getElementById('completionMessage').style.display = 'block';
+        //                 }, 500);
+        //             }
+
+        //             updateStats();
+        //             resetSelection();
+        //         }, 1000);
+                
+        //     } else {
+        //         // Wrong match
+        //         feedback.textContent = "Wrong Match! Try Again.";
+        //         feedback.className = 'feedback incorrect';
+                
+        //         setTimeout(() => {
+        //             firstImage.classList.remove('selected');
+        //             secondImage.classList.remove('selected');
+        //             resetSelection();
+        //             feedback.className = 'feedback';
+        //         }, 1000);
+        //     }
+            
+        //     updateStats();
+        // }
+    
+        function resetSelection() {
+            selectedImages.forEach(img => img.classList.remove('selected'));
+            selectedImages = [];
+        }
+
+        function updateStats() {
+            document.getElementById('matches').textContent = matchCount;
+            document.getElementById('attempts').textContent = attemptCount;
+            document.getElementById('remaining').textContent = remainingQuestions.length;
+        }
+
+        // function newGame() {
+        //     remainingQuestions = [...questionBank];
+        //     displayedPairs = [];
+        //     selectedImages = [];
+        //     matchCount = 0;
+        //     attemptCount = 0;
+        //     document.getElementById('completionMessage').style.display = 'none';
+        //     document.getElementById('feedback').className = 'feedback';
+        //     loadGame();
+        // }
+
+        // Initialize game
+        document.getElementById('newGame').addEventListener('click', newGame);
+        document.getElementById('playAgain').addEventListener('click', newGame);
+        document.getElementById('hint').addEventListener('click', function() {
+            alert("Click on two images to try to match a question with its answer. Correct matches will disappear and be replaced with new pairs.");
+        });
+        
+        window.onload = loadGame;
+    </script>
+</body>
+<!-- </html>
     <div class="keypoints">
         <div id="factorization">
             <h2>Factorizatio8</h2>
@@ -534,6 +1202,6 @@
             <br>(c) a green ball or a blue ball.
         </div>
    </div>
-</body>
+</body> -->
 </html>
 
