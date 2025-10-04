@@ -514,6 +514,14 @@
                 </div>
             </div>
             <div class="controls">
+                <label for="rangeSelect" style="margin-right: 10px; color: #2c3e50; font-weight: 600;">Question Range:</label>
+                <select id="rangeSelect" style="margin-right: 10px; padding: 8px 12px; border: 1px solid #ddd; border-radius: 5px; background: white; color: #2c3e50; font-weight: 500;">
+                    <option value="1-56" selected>All Questions</option>
+                    <option value="25-43">Properties of Plane Geometry</option>
+                    <option value="43-56">Congruent and Similar Triangles</option>
+                    <option value="1-19">Chapter 1 Arcs, Chords, and Angles</option>
+                    <option value="20-24">Chapter 2 Tangents</option>
+                </select>
                 <button id="newGame">New Game</button>
                 <button id="hint">How to Play</button>
             </div>
@@ -566,22 +574,28 @@
             { question: "q32.png", answer: "a32.png" },
             { question: "q33.png", answer: "a33.png" },
             { question: "q34.png", answer: "a34.png" },
-            { question: "q35.png", answer: "a35.png" }
-            // { question: "q36.png", answer: "a36.png" },
-            // { question: "q37.png", answer: "a37.png" },
-            // { question: "q38.png", answer: "a38.png" },
-            // { question: "q39.png", answer: "a39.png" },
-            // { question: "q40.png", answer: "a40.png" },
-            // { question: "q41.png", answer: "a41.png" },
-            // { question: "q42.png", answer: "a42.png" },
-            // { question: "q43.png", answer: "a43.png" },
-            // { question: "q44.png", answer: "a44.png" },
-            // { question: "q45.png", answer: "a45.png" },
-            // { question: "q46.png", answer: "a46.png" },
-            // { question: "q47.png", answer: "a47.png" },
-            // { question: "q48.png", answer: "a48.png" },
-            // { question: "q49.png", answer: "a49.png" },
-            // { question: "q50.png", answer: "a50.png" }
+            { question: "q35.png", answer: "a35.png" },
+            { question: "q36.png", answer: "a36.png" },
+            { question: "q37.png", answer: "a37.png" },
+            { question: "q38.png", answer: "a38.png" },
+            { question: "q39.png", answer: "a39.png" },
+            { question: "q40.png", answer: "a40.png" },
+            { question: "q41.png", answer: "a41.png" },
+            { question: "q42.png", answer: "a42.png" },
+            { question: "q43.png", answer: "a43.png" },
+            { question: "q44.png", answer: "a44.png" },
+            { question: "q45.png", answer: "a45.png" },
+            { question: "q46.png", answer: "a46.png" },
+            { question: "q47.png", answer: "a47.png" },
+            { question: "q48.png", answer: "a48.png" },
+            { question: "q49.png", answer: "a49.png" },
+            { question: "q50.png", answer: "a50.png" },
+            { question: "q51.png", answer: "a51.png" },
+            { question: "q52.png", answer: "a52.png" },
+            { question: "q53.png", answer: "a53.png" },
+            { question: "q54.png", answer: "a54.png" },
+            { question: "q55.png", answer: "a55.png" },
+            { question: "q56.png", answer: "a56.png" }
         ];
 
         let remainingQuestions = [...questionBank];
@@ -723,7 +737,11 @@
                     }
 
                     // Check if game is over (no more pairs to display)
-                    if (matchCount === 13 && remainingQuestions.length === 0) {
+                    const rangeSelect = document.getElementById('rangeSelect');
+                    const selectedRange = rangeSelect.value;
+                    const totalQuestionsInRange = getQuestionsInRange(selectedRange).length;
+                    
+                    if (matchCount === totalQuestionsInRange && remainingQuestions.length === 0) {
                         setTimeout(() => {
                             document.getElementById('completionMessage').style.display = 'block';
                         }, 500);
@@ -749,8 +767,22 @@
             updateStats();
         }
 
+        function getQuestionsInRange(range) {
+            const [start, end] = range.split('-').map(Number);
+            return questionBank.filter(pair => {
+                const questionNum = parseInt(pair.question.match(/\d+/)[0]);
+                return questionNum >= start && questionNum <= end;
+            });
+        }
+
         function newGame() {
-            remainingQuestions = [...questionBank];
+            const rangeSelect = document.getElementById('rangeSelect');
+            const selectedRange = rangeSelect.value;
+            
+            // Get questions for selected range
+            const rangeQuestions = getQuestionsInRange(selectedRange);
+            remainingQuestions = [...rangeQuestions];
+            
             displayedPairs = [];
             selectedImages = [];
             matchCount = 0;
@@ -923,11 +955,19 @@
         // Initialize game
         document.getElementById('newGame').addEventListener('click', newGame);
         document.getElementById('playAgain').addEventListener('click', newGame);
+        document.getElementById('rangeSelect').addEventListener('change', newGame);
         document.getElementById('hint').addEventListener('click', function() {
             alert("Click on two images to try to match a question with its answer. Correct matches will disappear and be replaced with new pairs.");
         });
         
-        window.onload = loadGame;
+        // Initialize with default range on page load
+        window.onload = function() {
+            const rangeSelect = document.getElementById('rangeSelect');
+            const selectedRange = rangeSelect.value;
+            const rangeQuestions = getQuestionsInRange(selectedRange);
+            remainingQuestions = [...rangeQuestions];
+            loadGame();
+        };
     </script>
 </body>
 <!-- </html>
